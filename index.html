@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هنر قهرمانان - آموزش حرفه‌ای فوتبال</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+    <script src="https://unpkg.com/fflate@0.8.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js"></script>
+
+</head>
+
+<body style="font-family: 'EstedadRegular';"">
+    <!-- 3D Canvas Container -->
+    <div class=" canvas-container">
+    <canvas id="three-canvas"></canvas>
+    </div>
+
+    <!-- Floating 3D Elements -->
+    <div class="floating-sphere sphere-1"></div>
+    <div class="floating-sphere sphere-2"></div>
+    <div class="floating-sphere sphere-3"></div>
+
+    <!-- Navigation -->
+    <!-- <nav id="navbar">
+        <div class="nav-content">
+            <div class="logo">هنر قهرمانان</div>
+            <ul class="nav-links">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#video">معرفی</a></li>
+                <li><a href="#problem">مشکل</a></li>
+                <li><a href="#solution">راه‌حل</a></li>
+                <li><a href="#modules">ماژول‌ها</a></li>
+                <li><a href="#pricing">قیمت</a></li>
+            </ul>
+        </div>
+    </nav> -->
+
+
+    
+
+    <div class="side-timeline" aria-label="Timeline navigation" role="navigation">
+        <button class="dot" data-target="#home" aria-label="خانه">
+            <span class="label">خانه</span>
+        </button>
+        <button class="dot" data-target="#video" aria-label="معرفی">
+            <span class="label">معرفی</span>
+        </button>
+        <button class="dot" data-target="#app" aria-label="اپلیکیشن">
+            <span class="label">اپلیکیشن</span>
+        </button>
+        <button class="dot" data-target="#modules" aria-label="ماژول‌ها">
+            <span class="label">ماژول‌ها</span>
+        </button>
+        
+        <button class="dot" data-target="#problem" aria-label="مشکل">
+            <span class="label">مشکل</span>
+        </button>
+        <button class="dot" data-target="#solution" aria-label="راه‌حل">
+            <span class="label">راه‌حل</span>
+        </button>
+        <button class="dot" data-target="#testimonial" aria-label="نظرات">
+            <span class="label">نظرات</span>
+        </button>
+        <button class="dot" data-target="#video-testimonials" aria-label="ویدیوها">
+            <span class="label">ویدیوها</span>
+        </button>
+        <button class="dot" data-target="#pricing" aria-label="قیمت">
+            <span class="label">قیمت</span>
+        </button>
+    </div>
+    <!-- Hero Video Background Section -->
+    <section class="hero-slider" id="home">
+        <!-- Right-side Scroll Timeline -->
+
+        <div class="slider-container">
+            <!-- <img  class="slide slide-1 active" src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" alt="Video 1"
+            style="object-fit: contain; width: 20%;height:75%">
+            <img class="slide slide-2" src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" alt="Video 2"
+            style="object-fit: contain; width: 20%;height:75%">
+            <img class="slide slide-3" src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" alt="Video 3"
+            style="object-fit: contain; width: 20%;height:75%"> -->
+            <img class="slide slide-1 active" src="./assets/images/slide-1.png">
+            <img class="slide slide-2" src="./assets/images/slide-2.png">
+            <img class="slide slide-3" src="./assets/images/slide-3.jpg">
+        </div>
+
+        <div class="hero-content" style="text-align: right;">
+            <h1 class="hero-title" style="font-family: 'TitrBold';">هنر قهرمانان</h1>
+            <p class="hero-subtitle" style="font-family: 'TitrMedium';">سیستم آموزش حرفه‌ای فوتبال</p>
+            <p class="hero-description" style="font-family: 'EstedadRegular';"">
+                روش سیستماتیک آموزشی که استعدادهای فردی را توسعه می‌دهد و همان چیزی را که استعدادیاب‌ها در بازیکنان جوان می‌جویند، ایجاد می‌کند. 
+                بازی فرزندتان را با تکنیک‌های حرفه‌ای مورد استفاده قهرمانان، متحول کنید.
+            </p>
+            <a href=" #pricing" class="cta-button" style="font-family: 'EstedadBold';"">شروع تمرین</a>
+        </div>
+
+        <div class=" slider-nav">
+            <div class="slider-dot active" onclick="currentSlide(1)"></div>
+            <div class="slider-dot" onclick="currentSlide(2)"></div>
+            <div class="slider-dot" onclick="currentSlide(3)"></div>
+        </div>
+    </section>
+
+    
+
+    
+
+    <!-- Video Introduction Section -->
+    <section class="video-section" id="video">
+        <div class="video-container">
+            <h2 class="video-title">فیلم معرفی</h2>
+            <p style="color: #b0b0b0; font-size: 1.2rem; margin-bottom: 2rem; opacity: 0; transform: translateY(30px);"
+                class="video-desc">
+                ببینید چگونه رویکرد سیستماتیک ما بازیکنان جوان را به دریبلرهای با اعتماد به نفس تبدیل می‌کند
+            </p>
+
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="play-button" onclick="playVideo()">
+                        <div class="play-icon"></div>
+                    </div>
+                    <p style="color: #b0b0b0; font-size: 1.1rem;">برای تماشای ویدیو معرفی کلیک کنید</p>
+                    <!-- <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">مدت زمان: ۳:۴۲</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile App Showcase Section -->
+    <section class="mobile-app-section" id="app">
+        <div class="section">
+            <h2 class="section-title">اپلیکیشن موبایل هنر قهرمانان</h2>
+            <p class="app-subtitle">تمرین‌ها، برنامه هفتگی و پیگیری پیشرفت – همیشه در جیب شما</p>
+
+            <div class="mobile-app">
+                <div class="phone-wrap">
+                    <div class="phone">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="ma-carousel" aria-label="اسکرین‌های اپلیکیشن">
+                                <button class="ma-nav ma-prev" aria-label="قبلی">‹</button>
+                                <div class="ma-viewport">
+                                    <div class="ma-track">
+                                        <div class="ma-slide active" data-index="0">
+                                            <img src="./assets/images/app-slider-1.png" alt="صفحه خانه اپلیکیشن">
+                                        </div>
+                                        <div class="ma-slide" data-index="1">
+                                            <img src="./assets/images/app-slider-2.png" alt="لیست تمرین‌ها">
+                                        </div>
+                                        <div class="ma-slide" data-index="2">
+                                            <img src="./assets/images/app-slider-3.png" alt="جزئیات تمرین">
+                                        </div>
+                                        <div class="ma-slide" data-index="3">
+                                            <img src="./assets/images/app-slider-4.png" alt="جزئیات تمرین">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="ma-nav ma-next" aria-label="بعدی">›</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glow"></div>
+                </div>
+
+                <div class="app-screens-grid" aria-hidden="true">
+                    <div class="app-card tilt-1"><img src="./assets/images/map-1.jpg" alt="نمونه اسکرین ۱"></div>
+                    <div class="app-card tilt-2"><img src="./assets/images/map-2.jpg" alt="نمونه اسکرین ۲"></div>
+                    <div class="app-card tilt-3"><img src="./assets/images/program-1.jpg" alt="نمونه اسکرین ۳"></div>
+                    <div class="app-card tilt-4"><img src="./assets/images/program-2.jpg" alt="نمونه اسکرین ۴"></div>
+                </div>
+            </div>
+
+            <div class="app-cta">
+                <a href="#pricing" class="cta-button">دریافت اپلیکیشن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Modules Section -->
+    <section class="timeline-section" id="modules">
+        <div class="section">
+            <h2 class="section-title">۵ ماژول تخصصی - بیش از ۲۱۰ تمرین</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="module-image-container">
+                        <img src="./assets/images/module-1.png" alt="ماژول ۱ - هنر فیک با بدن" class="module-image">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="module-number">ماژول ۱</div>
+                        <h3 class="module-title">هنر فیک با بدن</h3>
+                        <p class="module-description">
+                            تسلط بر تغییر جهت با تکنیک‌های صحیح برای دریبل کردن از حریفان با ظرافت.
+                            هنر فریب را از طریق حرکت بدن بیاموزید و تغییر سرعت غیرقابل توقف را توسعه دهید.
+                        </p>
+                        <div class="module-stats">
+                            <span>۳ هفته تمرین</span>
+                            <span>۴۲ تمرین</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="module-image-container">
+                        <img src="./assets/images/module-2.png" alt="ماژول ۲ - هنر حرکت" class="module-image">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="module-number">ماژول ۲</div>
+                        <h3 class="module-title">هنر حرکت</h3>
+                        <p class="module-description">
+                            حرکات امضای مسی و راز چابکی او را کشف کنید. تسلط بر کنترل توپ
+                            و مکانیزمی که دریبل را در برابر مدافعان سریع بی‌دردسر می‌کند، بیاموزید.
+                        </p>
+                        <div class="module-stats">
+                            <span>۴ هفته تمرین</span>
+                            <span>۳۷ تمرین</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="module-image-container">
+                        <img src="./assets/images/module-3.png" alt="ماژول ۳ - هنر استپ‌اورها" class="module-image">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="module-number">ماژول ۳</div>
+                        <h3 class="module-title">هنر استپ‌اورها</h3>
+                        <p class="module-description">
+                            تکنیک‌های استپ‌اور را برای حفظ مالکیت توپ در محاصره حریفان تسلط یابید.
+                            ترکیبات مخفی را بیاموزید که حریفان را به سمت مخالف می‌برد و فاصله ایجاد می‌کند.
+                        </p>
+                        <div class="module-stats">
+                            <span>۲ هفته تمرین</span>
+                            <span>۳۲ تمرین</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="module-image-container">
+                        <img src="./assets/images/module-4.png" alt="ماژول ۴ - هنر خلاقیت" class="module-image">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="module-number">ماژول ۴</div>
+                        <h3 class="module-title">هنر خلاقیت</h3>
+                        <p class="module-description">
+                            ترفندهای کریستیانو رونالدو را برای دریبل سریع، ساده و مؤثر باز کنید.
+                            حرکات امضای او و ترکیبات مهارتی که سبک دریبل او را منحصر به فرد می‌کند، بیاموزید.
+                        </p>
+                        <div class="module-stats">
+                            <span>۶ هفته تمرین</span>
+                            <span>۱۰۰ تمرین</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="module-image-container">
+                        <img src="./assets/images/module-5.png" alt="ماژول ۵ - هنر سبک V" class="module-image">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="module-number">ماژول ۵</div>
+                        <h3 class="module-title">هنر سبک V</h3>
+                        <p class="module-description">
+                            تکنیک مخفی را که بازیکنان را بهتر از همسالانشان می‌کند، حتی در برابر حریفان قوی‌تر تسلط
+                            یابید.
+                            ترکیبات سبک V را برای رویکرد دریبل منحصر به فرد و چندجانبه بیاموزید.
+                        </p>
+                        <div class="module-stats">
+                            <span>۳ هفته تمرین</span>
+                            <span>۳۶ تمرین</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
+        <div class="section">
+            <h2 class="section-title" style="font-size: 1.5rem;">چرا برخی بازیکنان جوان برایشان آسان است، در حالی که دیگران با مشکل مواجه می‌شوند؟</h2>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <span class="problem-icon">⚡</span>
+                    <h3 class="problem-title">فشار روز بازی</h3>
+                    <p class="problem-description">
+                        بیشتر بازیکنان جوان برای اجرا تحت فشار مسابقه مشکل دارند. آن‌ها در جلسات تمرینی عالی به نظر
+                        می‌رسند اما وقتی مهم است ناپدید می‌شوند. اعتماد به نفس آن‌ها در لحظه‌ای که مدافعان شروع به نزدیک
+                        شدن می‌کنند از بین می‌رود.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">🎯</span>
+                    <h3 class="problem-title">تله آکادمی</h3>
+                    <p class="problem-description">
+                        بیشتر آکادمی‌ها تقریباً کاملاً روی تاکتیک‌های تیمی و بازی ترکیبی تمرکز دارند. توسعه مهارت‌های
+                        فردی در اولویت دوم قرار می‌گیرد و بازیکنان قابل پیش‌بینی ایجاد می‌شوند.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">🧠</span>
+                    <h3 class="problem-title">شکاف هوشمندی</h3>
+                    <p class="problem-description">
+                        بازیکنان جوانی که از نظر فنی کامل‌ترین هستند اغلب در سطوح بالاتر متوقف می‌شوند. آن‌ها می‌توانند
+                        هر حرکتی را به طور بی‌نقص اجرا کنند اما وقتی این حرکات نیاز به کاربرد استراتژیک در طول مسابقات
+                        دارند، شکست می‌خورند.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section section" id="solution">
+        <img class="solution-section image" src="./assets/images/aoc_5_farsi.png">
+        <h2 class="section-title">راه‌حل ما: سیستم هنر قهرمانان</h2>
+        <p style="text-align: center; color: #b0b0b0; font-size: 1.3rem; margin-bottom: 4rem; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0; transform: translateY(30px);"
+            class="solution-desc">
+            همان سیستمی که ۱۰ بازیکن حرفه‌ای تربیت کرده و بیش از ۵۰۰ ورزشکار جوان را به سمت تعالی هدایت کرده است.
+        </p>
+
+        <div class="solution-features">
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h3 class="feature-title">تمرین تحت فشار</h3>
+                <p class="feature-description">تمرینات خاصی که مقاومت در برابر فشار را از روز اول ایجاد می‌کنند و شرایط
+                    واقعی بازی را راحت می‌کنند</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎪</div>
+                <h3 class="feature-title">یادگیری در بافت بازی</h3>
+                <p class="feature-description">هر تکنیک در شرایط واقعی بازی آموزش داده می‌شود، نه تمرینات مخروطی جداگانه
+                </p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">سرعت تصمیم‌گیری</h3>
+                <p class="feature-description">هر حرکت سرعت تصمیم‌گیری را در کنار مهارت‌های فنی ایجاد می‌کند</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">هوش فوتبالی</h3>
+                <p class="feature-description">درک نه تنها نحوه اجرای تکنیک‌ها، بلکه زمان مؤثرترین استفاده از هر یک</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" id="testimonial" style="direction: rtl;">
+        <div class="section">
+            <h2 class="section-title">داستان‌های موفقیت</h2>
+            <div class="testimonials-slider" aria-label="اسلایدر داستان‌های موفقیت">
+                <div class="testimonials-track">
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/5.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="France" aria-label="France">
+                                <img src="https://flagsapi.com/FR/shiny/64.png" alt="France flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"پسرم در عرض ۶ هفته به طور چشمگیری پیشرفت کرد. اکنون او بازیکن ستاره تیمش است و اعتماد به نفسش به شدت افزایش یافته است."</p>
+                        <p class="testimonial-author">- سارا جانسون، والدین</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/6.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="Italy" aria-label="Italy">
+                                <img src="https://flagsapi.com/IT/shiny/64.png" alt="Italy flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"این دوره بهترین سرمایه‌گذاری برای آینده فوتبالی فرزندم بود. تکنیک‌ها در سطح حرفه‌ای هستند اما درک آن‌ها آسان است."</p>
+                        <p class="testimonial-author">- مارک ویلیامز، والدین</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/7.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="Netherlands" aria-label="Netherlands">
+                                <img src="https://flagsapi.com/NL/shiny/64.png" alt="Netherlands flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"تمریناتی که یاد گرفتم واقعاً در مسابقات مهم به من کمک کردند. اکنون می‌توانم با اعتماد به نفس از مدافعان دریبل کنم."</p>
+                        <p class="testimonial-author">- الکس تامپسون، بازیکن ۱۴ ساله</p>
+                    </div>
+                    <!-- duplicated for seamless infinite loop -->
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/5.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="France" aria-label="France">
+                                <img src="https://flagsapi.com/FL/shiny/64.png" alt="France flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"پسرم در عرض ۶ هفته به طور چشمگیری پیشرفت کرد. اکنون او بازیکن ستاره تیمش است و اعتماد به نفسش به شدت افزایش یافته است."</p>
+                        <p class="testimonial-author">- سارا جانسون، والدین</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/6.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="Italy" aria-label="Italy">
+                                <img src="https://flagsapi.com/NL/shiny/64.png" alt="Italy flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"این دوره بهترین سرمایه‌گذاری برای آینده فوتبالی فرزندم بود. تکنیک‌ها در سطح حرفه‌ای هستند اما درک آن‌ها آسان است."</p>
+                        <p class="testimonial-author">- مارک ویلیامز، والدین</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/7.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="Netherlands" aria-label="Netherlands">
+                                <img src="https://flagcdn.com/w24/nl.png" alt="Netherlands flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"تمریناتی که یاد گرفتم واقعاً در مسابقات مهم به من کمک کردند. اکنون می‌توانم با اعتماد به نفس از مدافعان دریبل کنم."</p>
+                        <p class="testimonial-author">- الکس تامپسون، بازیکن ۱۴ ساله</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Tweets Slider Section -->
+    <section class="tweets-section" id="tweets">
+        <div class="section">
+            <h2 class="section-title">بازخورد از سراسر کشورها</h2>
+            <div class="tweets-slider" aria-label="اسلایدر توییت‌ها">
+                <div class="tweets-track">
+                    <!-- real items -->
+                    <article class="tweet-card" aria-label="Tweet">
+                        <div class="tweet-image-wrap">
+                            <img src="./assets/images/t2.jpg" alt="اسکرین‌شات توییت" class="tweet-image">
+                            <!-- <span class="tweet-country" title="Germany" aria-label="Germany">
+                                <img src="https://flagsapi.com/DE/shiny/64.png" alt="Germany flag">
+                            </span> -->
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">ترجمه:این بهترین آموزش گام‌به‌گام فینتی است که تاکنون دیده‌ام!</p>
+                            <div class="tweet-meta">@pedalboyy</div>
+                        </div>
+                    </article>
+                    <article class="tweet-card" aria-label="Tweet">
+                        <div class="tweet-image-wrap">
+                            <img src="./assets/images/t4.jpg" alt="اسکرین‌شات توییت" class="tweet-image">
+                            <!-- <span class="tweet-country" title="Spain" aria-label="Spain">
+                                <img src="https://flagcdn.com/w24/es.png" alt="Spain flag">
+                            </span> -->
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">ترجمه:من از دو سال پیش به پسر ۸ ساله‌ام فینت می‌آموزم، اما او هنوز خوب نیست... این ویدیو را دیدم و حالا می‌دانم چه چیزی باید اصلاح کنم!! بهترین فینت
+                            </p>
+                            <div class="tweet-meta">@jonasbritto</div>
+                        </div>
+                    </article>
+                    <article class="tweet-card" aria-label="Tweet">
+                        <div class="tweet-image-wrap">
+                            <img src="./assets/images/t1.jpg" alt="اسکرین‌شات توییت" class="tweet-image">
+                            <!-- <span class="tweet-country" title="United Kingdom" aria-label="United Kingdom">
+                                <img src="https://flagcdn.com/w24/gb.png" alt="United Kingdom flag">
+                            </span> -->
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">ترجمه:روشی که مربی حرکت را تجزیه می‌کند واقعاً شگفت‌انگیز است.
+                            </p>
+                            <div class="tweet-meta">@diulikadikaday</div>
+                        </div>
+                    </article>
+                    <!-- duplicated for seamless loop -->
+                    <article class="tweet-card" aria-label="Tweet">
+                        <div class="tweet-image-wrap">
+                            <img src="./assets/images/t3.jpg" alt="اسکرین‌شات توییت" class="tweet-image">
+                            <!-- <span class="tweet-country" title="Germany" aria-label="Germany">
+                                <img src="https://flagcdn.com/w24/de.png" alt="Germany flag">
+                            </span> -->
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">ترجمه:این خیلی بهتر از ویدیوهای مهارت‌های زیبا و پیچیده است. من واقعاً ۱۵ ساله هستم و از اینجا یاد می‌گیرم — یادگیری واقعاً هیچ سنی ندارد.
+                            </p>
+                            <div class="tweet-meta">@jayysoon</div>
+                        </div>
+                    </article>
+                    <article class="tweet-card" aria-label="Tweet">
+                        <div class="tweet-image-wrap">
+                            <img src="./assets/images/t5.jpg" alt="اسکرین‌شات توییت" class="tweet-image">
+                            <!-- <span class="tweet-country" title="Spain" aria-label="Spain">
+                                <img src="https://flagcdn.com/w24/es.png" alt="Spain flag">
+                            </span> -->
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">ترجمه:خیلی متاسفم که چین چنین مربیان خوبی ندارد 😢 کودکان چین توسط مربیان سطح پایین گمراه می‌شوند.
+                            </p>
+                            <div class="tweet-meta">@GangMa-xrq</div>
+                        </div>
+                    </article>
+                    <!-- <article class="tweet-card" aria-label="Tweet">
+                        <div class="tweet-image-wrap">
+                            <img src="./assets/images/4.jpg" alt="اسکرین‌شات توییت" class="tweet-image">
+                            <span class="tweet-country" title="United Kingdom" aria-label="United Kingdom">
+                                <img src="https://flagcdn.com/w24/gb.png" alt="United Kingdom flag">
+                            </span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">ترجمه: تکنیک‌ها ساده توضیح داده شده اما نتیجه حرفه‌ای است. پیشنهاد می‌کنم.</p>
+                            <div class="tweet-meta">@coach_liam · London, UK</div>
+                        </div>
+                    </article> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <!-- Video Testimonials Carousel -->
+    <section class="video-testimonials" id="video-testimonials">
+        <div class="">
+            <h2 class="" style="text-align: center;margin-block: 10px;font-size: 2.5rem;">ویدیوها</h2>
+            <div class="vt-carousel" aria-label="کاروسل ویدیوهای نظرات">
+                <button class="vt-nav vt-prev" aria-label="قبلی">‹</button>
+                <div class="vt-viewport">
+                    <div class="vt-track">
+                        <div class="vt-slide active" data-index="0">
+                            <div class="vt-card">
+                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-1.png" muted>
+                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" type="video/mp4">
+                                </video>
+                                <div class="vt-caption">
+                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/DE/shiny/64.png" alt="DE"></div> -->
+                                    <!-- <div class="vt-text">ترجمه: این دوره بازی من را متحول کرد. فوق‌العاده کاربردی.</div>
+                                    <div class="vt-author">@max_football · Berlin</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vt-slide" data-index="1">
+                            <div class="vt-card">
+                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-2.png" muted>
+                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" type="video/mp4">
+                                </video>
+                                <div class="vt-caption">
+                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/ES/shiny/64.png" alt="ES"></div> -->
+                                    <!-- <div class="vt-text">ترجمه: ساختار تمرین‌ها عالیه، پسرم عاشقشه.</div>
+                                    <div class="vt-author">@maria_parent · Madrid</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vt-slide" data-index="2">
+                            <div class="vt-card">
+                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
+                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9wy7a6VEDq/origin_7KbRNd0Glqh2a55buy9ozOVoGuR2QatgFX4h916g.mp4" type="video/mp4">
+                                </video>
+                                <div class="vt-caption">
+                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
+                                    <!-- <div class="vt-text">ترجمه: توضیحات ساده ولی نتیجه حرفه‌ای. عالی بود.</div> -->
+                                    <!-- <div class="vt-author">@coach_liam · London</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vt-slide" data-index="3">
+                            <div class="vt-card">
+                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
+                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/nKoN40N3Jw/origin_M2YXryo1x5sNDZYVAhvXsz7JYREhWZAljSqoqYnQ.mp4" type="video/mp4">
+                                </video>
+                                <div class="vt-caption">
+                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
+                                    <!-- <div class="vt-text">ترجمه: توضیحات ساده ولی نتیجه حرفه‌ای. عالی بود.</div> -->
+                                    <!-- <div class="vt-author">@coach_liam · London</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vt-slide" data-index="4">
+                            <div class="vt-card">
+                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
+                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9b473o7YJe/origin_dykAlsuWhwlyjr73syktr2Hj7O4jEIEJMUD61kXR.mp4" type="video/mp4">
+                                </video>
+                                <div class="vt-caption">
+                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
+                                    <!-- <div class="vt-text">ترجمه: توضیحات ساده ولی نتیجه حرفه‌ای. عالی بود.</div> -->
+                                    <!-- <div class="vt-author">@coach_liam · London</div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="vt-nav vt-next" aria-label="بعدی">›</button>
+            </div>
+            <div class="vt-dots" style="margin-block: 50px;padding-bottom: 50px;" role="tablist" aria-label="انتخاب اسلاید">
+                <button class="vt-dot active" data-index="0" aria-label="اسلاید ۱"></button>
+                <button class="vt-dot" data-index="1" aria-label="اسلاید ۲"></button>
+                <button class="vt-dot" data-index="2" aria-label="اسلاید ۳"></button>
+                <button class="vt-dot" data-index="3" aria-label="اسلاید ۴"></button>
+                <button class="vt-dot" data-index="4" aria-label="اسلاید ۵"></button>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="section">
+            <h2 class="section-title">دسترسی فوری به هنر قهرمانان دریافت کنید</h2>
+            <div class="pricing-card">
+                <div class="pricing-content">
+                    <p class="old-price">قیمت اصلی: ۲ میلیون تومان</p>
+                    <h3 class="current-price">۷۰۰ هزارتومان</h3>
+                    <p class="price-subtitle">پرداخت یکبار - دسترسی مادام‌العمر</p>
+
+                    <ul class="features-list">
+                        <li>۵ ماژول تخصصی کامل</li>
+                        <li>بیش از ۲۱۰ تمرین حرفه‌ای</li>
+                        <li>دسترسی انحصاری به اپلیکیشن موبایل</li>
+                        <li>راهنماهای ویدیویی گام به گام</li>
+                        <li>به‌روزرسانی‌های رایگان مادام‌العمر</li>
+                        <li>پشتیبانی کامل شامل</li>
+                        <li>ضمانت بازگشت وجه ۳۰ روزه</li>
+                    </ul>
+
+                    <a href="#" class="cta-button" onclick="handlePurchase()">دسترسی فوری دریافت کنید - ۷۰۰ هزارتومان</a>
+                    <p style="color: #666; font-size: 0.95rem; margin-top: 1.5rem; opacity: 0; transform: translateY(20px);"
+                        class="next-price">قیمت بعدی: ۲ میلیون تومان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">سیاست حریم خصوصی</a>
+                <a href="#">شرایط خدمات</a>
+                <a href="#">تماس با ما</a>
+                <a href="#">پشتیبانی</a>
+                <a href="#">سیاست بازپرداخت</a>
+            </div>
+            <p class="footer-copyright">© ۲۰۲۵ هنر قهرمانان. تمام حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script>
+
+
+        // Initialize GSAP and ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Three.js 3D Scene Setup
+        let scene, camera, renderer, footballs = [], particles = [];
+        let fbxSphereModels = [];
+        let mixers = [];
+        let clock;
+        const numberOfBalls = 1;
+        const numberOfCones = 3;
+
+        function init3DScene() {
+            // Scene setup
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('three-canvas'),
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+
+            // Create footballs
+            // const footballGeometry = new THREE.SphereGeometry(0.3, 32, 32);
+            // const footballMaterial = new THREE.MeshPhongMaterial({
+            //     color: 0x00ff87,
+            //     transparent: true,
+            //     opacity: 0.8,
+            //     emissive: 0x004420
+            // });
+
+            // for (let i = 0; i < 8; i++) {
+            //     const football = new THREE.Mesh(footballGeometry, footballMaterial);
+            //     football.position.x = (Math.random() - 0.5) * 20;
+            //     football.position.y = (Math.random() - 0.5) * 20;
+            //     football.position.z = (Math.random() - 0.5) * 10;
+            //     football.userData = {
+            //         originalY: football.position.y,
+            //         speed: 0.001 + Math.random() * 0.002
+            //     };
+            //     scene.add(football);
+            //     footballs.push(football);
+            // }
+
+            // Create particle system
+            const particleGeometry = new THREE.BufferGeometry();
+            const particleCount = 100;
+            const positions = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 50;
+                positions[i + 1] = (Math.random() - 0.5) * 50;
+                positions[i + 2] = (Math.random() - 0.5) * 30;
+            }
+
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x60efff,
+                size: 0.05,
+                transparent: true,
+                opacity: 0.6
+            });
+
+            const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particleSystem);
+            particles.push(particleSystem);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+
+            const pointLight = new THREE.PointLight(0xffffff, 1, 10);
+            pointLight.position.set(10, 10, 10);
+            scene.add(pointLight);
+
+            camera.position.z = 8;
+
+            clock = new THREE.Clock();
+
+            animate3D();
+        }
+
+        // Load an FBX model and optionally play its first animation
+        async function loadFBX(modelUrl, options = {}) {
+            if (!THREE || !THREE.FBXLoader) {
+                console.error('FBXLoader not found. Ensure the FBXLoader script is included.');
+                return;
+            }
+
+            const loader = new THREE.FBXLoader();
+            let ballObjects = [];
+            loader.load(
+                modelUrl,
+                (object) => {
+                    const {
+                        position = { x: 0, y: 0, z: 0 },
+                        rotation = { x: 0, y: 0, z: 0 },
+                        scale = 0.015
+                    } = options;
+
+                    object.position.set(position.x, position.y, position.z);
+                    object.rotation.set(rotation.x, rotation.y, rotation.z);
+                    object.scale.setScalar(scale);
+
+                    scene.add(object);
+
+                    fbxSphereModels.push(
+                        object
+                    );
+                    // If we have not assigned a replacement yet, use this model to replace sphere-1
+                    if (!fbxSphereModels[fbxSphereModels.length - 1]) {
+                        fbxSphereModels[fbxSphereModels.length - 1] = object;
+                        const sphereEl = document.querySelector('.sphere-1');
+                        if (sphereEl) sphereEl.style.display = 'none';
+                        // Setup bobbing params
+                        object.userData.baseY = object.position.y;
+                        object.userData.bobSpeed = 0.0015;
+                    }
+
+                    if (object.animations && object.animations.length > 0) {
+                        const mixer = new THREE.AnimationMixer(object);
+                        const action = mixer.clipAction(object.animations[0]);
+                        action.play();
+                        mixers.push(mixer);
+                    }
+
+                    console.log('FBX loaded:', modelUrl);
+                },
+                undefined,
+                (error) => {
+                    console.error('Error loading FBX:', error);
+                }
+            );
+        }
+
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+            const delta = clock ? clock.getDelta() : 0.016;
+
+            if (mixers && mixers.length > 0) {
+                mixers.forEach(mixer => mixer.update(delta));
+            }
+
+            // Bobbing and gentle rotation for FBX replacement model
+            fbxSphereModels.forEach(fbxSphereModel => {
+                if (fbxSphereModel) {
+                    const t = Date.now();
+                    const speed = fbxSphereModel.userData.bobSpeed || 0.0015;
+                    fbxSphereModel.position.y = (fbxSphereModel.userData.baseY || 0) + Math.sin(t * speed) * 0.6;
+                    fbxSphereModel.rotation.y += 0.003;
+                }
+            });
+
+
+            // Animate footballs
+            footballs.forEach(football => {
+                football.rotation.x += 0.01;
+                football.rotation.y += 0.01;
+                football.position.y = football.userData.originalY + Math.sin(Date.now() * football.userData.speed) * 2;
+            });
+
+            // Animate particles
+            particles.forEach(particle => {
+                particle.rotation.y += 0.001;
+                particle.rotation.x += 0.0005;
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        // Initialize 3D scene
+        init3DScene();
+
+        // Example: load an FBX file (replace with your own path)
+        for (let i = 0; i <= numberOfBalls; i++) {
+            loadFBX('assets/models/FootBall.fbx', {
+                scale: 0.005 + (Math.random() * 0.001), position: {
+                    x: (Math.random() - 0.5) * 20
+                    , y: (Math.random() - 0.5) * 20, z: (Math.random() - 0.5) * 10
+                }
+            });
+        }
+
+
+        for (let i = 0; i <= numberOfCones; i++) {
+            loadFBX('assets/models/cone.fbx', {
+                scale: 0.02 + (Math.random() * 0.01), position: {
+                    x: (Math.random() - 0.5) * 20
+                    , y: (Math.random() - 0.5) * 20, z: (Math.random() - 0.5) * 10
+                }
+            });
+        }
+
+
+        // Hero Animations
+        gsap.timeline()
+            .to('.logo', { opacity: 1, duration: 1, ease: "power3.out" })
+            .to('.nav-links a', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out"
+            }, "-=0.5")
+            .to('.hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power4.out"
+            }, "-=0.3")
+            .to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power3.out"
+            }, "-=1")
+            .to('.hero-description', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.8")
+            .to('.cta-button', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            }, "-=0.5")
+            .to('.slider-nav', {
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.3");
+
+        // Video Section Animations
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.video-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.video-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power3.out"
+            })
+            .to('.video-desc', {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power3.out"
+            }, "-=0.5")
+            .to('.video-wrapper', {
+                opacity: 1,
+                scale: 1,
+                duration: 0.9,
+                ease: "power3.out"
+            }, "-=0.3");
+
+        // Problem Cards Animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.problem-section',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.problem-section .section-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,//1.2,
+                ease: "power3.out"
+            })
+            .to('.problem-card', {
+                opacity: 1,
+                y: 0,
+                rotationX: 0,
+                duration: 0.75,//1.5,
+                stagger: 0.2,
+                ease: "power3.out",
+                onComplete: function () {
+                    gsap.to('.problem-icon', {
+                        scale: 1,
+                        duration: 0.8,
+                        stagger: 0.1,
+                        ease: "back.out(1.7)"
+                    });
+                    gsap.to('.problem-title', {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.5,//1,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    });
+                    gsap.to('.problem-description', {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,//1.2,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    });
+                }
+            }, "-=0.5");
+
+        // Solution Features Animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.solution-section',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.solution-section .section-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power3.out"
+            })
+            .to('.solution-desc', {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: "power3.out"
+            }, "-=0.5")
+            .to('.feature', {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.75,
+                stagger: 0.15,
+                ease: "power3.out",
+                onComplete: function () {
+                    gsap.to('.feature-icon', {
+                        rotationY: 0,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    });
+                    gsap.to('.feature-title', {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    });
+                    gsap.to('.feature-description', {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    });
+                }
+            }, "-=0.3");
+
+        // Timeline Animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.timeline-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.timeline-section .section-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power3.out"
+            })
+            .to('.timeline-line', {
+                scaleY: 1,
+                duration: 1.4,
+                ease: "power3.out"
+            }, "-=0.5");
+
+        // Mobile App section animations
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.mobile-app-section',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+        .to('.mobile-app-section .section-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' })
+        .to('.app-subtitle', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+        .fromTo('.phone', { y: 60, opacity: 0, rotate: -6 }, { y: 0, opacity: 1, rotate: -2, duration: 0.8, ease: 'power3.out' }, '-=0.2')
+        .to('.app-card', { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }, '-=0.4');
+
+        // Timeline Items Animation
+        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+            const content = item.querySelector('.timeline-content');
+            const imageContainer = item.querySelector('.module-image-container');
+            const isEven = index % 2 === 1;
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            })
+                .to(item, {
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: "power3.out"
+                })
+                .to(imageContainer, {
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                }, "-=0.3")
+                .to(content, {
+                    x: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                }, "-=0.5")
+                .to(content.querySelector('::before'), {
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "back.out(1.7)"
+                }, "-=0.8")
+                .to(content.querySelector('.module-number'), {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                }, "-=0.6")
+                .to(content.querySelector('.module-title'), {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                }, "-=0.8")
+                .to(content.querySelector('.module-description'), {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                }, "-=0.6")
+                .to(content.querySelector('.module-stats'), {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                }, "-=0.4")
+                .to(content.querySelectorAll('.module-stats span'), {
+                    scale: 1,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "back.out(1.7)"
+                }, "-=0.5");
+        });
+
+        // Testimonials Animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.testimonials-section',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.testimonials-section .section-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power3.out"
+            })
+            .to('.testimonial', {
+                opacity: 1,
+                rotationY: 0,
+                duration: 0.75,
+                stagger: 0.2,
+                ease: "power3.out",
+                onComplete: function () {
+                    gsap.to('.testimonial-text', {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    });
+                    gsap.to('.testimonial-author', {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    });
+                }
+            }, "=0.5");
+
+        // Pricing Animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.pricing-section',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.pricing-section .section-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power3.out"
+            })
+            .to('.pricing-card', {
+                opacity: 1,
+                rotationX: 0,
+                scale: 1,
+                duration: 1.5,
+                ease: "power3.out"
+            }, "-=0.5")
+            .to('.old-price', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.8")
+            .to('.current-price', {
+                opacity: 1,
+                scale: 1,
+                duration: 1.2,
+                ease: "back.out(1.7)"
+            }, "-=0.6")
+            .to('.price-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.4")
+            .to('.features-list li', {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: "power3.out"
+            }, "-=0.2")
+            .to('.next-price', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.3");
+
+        // Footer Animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: 'footer',
+                start: 'top 90%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.footer-links a', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: "power3.out"
+            })
+            .to('.footer-copyright', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.5");
+
+        // Video testimonials carousel controls
+        (function initVideoTestimonials() {
+            const track = document.querySelector('.vt-track');
+            const slides = Array.from(document.querySelectorAll('.vt-slide'));
+            const dots = Array.from(document.querySelectorAll('.vt-dot'));
+            const prev = document.querySelector('.vt-prev');
+            const next = document.querySelector('.vt-next');
+            if (!track || slides.length === 0) return;
+
+            let index = 0;
+
+            function updateActive(newIndex) {
+                // Clamp index
+                index = (newIndex + slides.length) % slides.length;
+                // Update transform
+                track.style.transform = `translateX(${index * 100}%)`;
+                // Update slide classes and play/pause
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                    const video = slide.querySelector('.vt-video');
+                    if (!video) return;
+                    if (i === index) {
+                        video.currentTime = 0;
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+                // Update dots
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            }
+
+            prev?.addEventListener('click', () => updateActive(index - 1));
+            next?.addEventListener('click', () => updateActive(index + 1));
+            dots.forEach(d => d.addEventListener('click', () => updateActive(parseInt(d.dataset.index))));
+
+            // Pause on slide click toggle
+            slides.forEach(slide => {
+                const video = slide.querySelector('.vt-video');
+                video?.addEventListener('click', () => {
+                    if (video.paused) video.play().catch(() => {}); else video.pause();
+                });
+            });
+
+            // Auto-advance every 10s
+            setInterval(() => updateActive(index + 1), 40000);
+
+            // Start
+            updateActive(0);
+        })();
+
+        // Mobile app carousel controls
+        (function initMobileAppCarousel(){
+            const track = document.querySelector('.ma-track');
+            const slides = Array.from(document.querySelectorAll('.ma-slide'));
+            const prev = document.querySelector('.ma-prev');
+            const next = document.querySelector('.ma-next');
+            if (!track || slides.length === 0) return;
+
+            let index = 0;
+            function update(newIndex){
+                index = (newIndex + slides.length) % slides.length;
+                track.style.transform = `translateX(${index * 100}%)`;
+                slides.forEach((s,i)=> s.classList.toggle('active', i === index));
+            }
+            prev?.addEventListener('click', ()=> update(index - 1));
+            next?.addEventListener('click', ()=> update(index + 1));
+            setInterval(()=> update(index + 1), 8000);
+            update(0);
+        })();
+
+        // Slider functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                const video = slide.querySelector('video');
+                slide.classList.toggle('active', i === index);
+
+                if (i === index) {
+                    // Play the active video
+                    if (video) {
+                        video.currentTime = 0; // Reset to beginning
+                        video.play().catch(e => console.log('Video play failed:', e));
+                    }
+                } else {
+                    // Pause other videos
+                    if (video) {
+                        video.pause();
+                    }
+                }
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Initialize video elements
+        function initializeVideos() {
+            const videos = document.querySelectorAll('.slide video');
+            videos.forEach((video, index) => {
+                // Ensure videos are muted and set up properly
+                video.muted = true;
+                video.loop = true;
+                video.playsInline = true;
+
+                // Handle video end event for seamless looping
+                video.addEventListener('ended', function () {
+                    this.currentTime = 0;
+                    this.play().catch(e => console.log('Video restart failed:', e));
+                });
+
+                // Preload videos for smooth transitions
+                video.preload = 'metadata';
+            });
+
+            // Start the first video
+            if (videos[0]) {
+                videos[0].play().catch(e => console.log('Initial video play failed:', e));
+            }
+        }
+
+        // Helper function to set video URLs
+        function setVideoUrls(videoUrls) {
+            const videos = document.querySelectorAll('.slide video source');
+            videoUrls.forEach((url, index) => {
+                if (videos[index] && url) {
+                    videos[index].src = url;
+                    // Reload the video element to pick up the new source
+                    videos[index].parentElement.load();
+                }
+            });
+        }
+
+        // Initialize videos when page loads
+        initializeVideos();
+
+        // TODO: Add your video URLs here
+        // Example usage:
+        setVideoUrls([
+            'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4',
+            'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4',
+            'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4'
+        ]);
+
+        // Auto-advance slides with GSAP (increased duration for videos)
+        gsap.to({}, {
+            duration: 8, // Increased to 8 seconds to allow videos to play longer
+            repeat: -1,
+            onRepeat: nextSlide
+        });
+
+        // Video functionality with GSAP animation
+        function playVideo() {
+            const videoWrapper = document.querySelector('.video-wrapper');
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+
+            // Animate out the placeholder
+            gsap.to(videoPlaceholder, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.5,
+                ease: "power2.inOut",
+                onComplete: function () {
+                    videoPlaceholder.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: linear-gradient(45deg, #1a1a2e, #16213e);">
+                            <div style="text-align: center; color: #b0b0b0;">
+                                <div style="width: 60px; height: 60px; border: 3px solid #00ff87; border-top: 3px solid transparent; border-radius: 50%; margin: 0 auto 1rem; animation: spin 1s linear infinite;"></div>
+                                <h3 style="margin-bottom: 1rem; color: #00ff87;">در حال بارگذاری ویدیو...</h3>
+                                <p>این بخش را با کد embed ویدیوی واقعی خود جایگزین کنید</p>
+                                <p style="font-size: 0.9rem; margin-top: 1rem; color: #666;">
+                                    مثال: YouTube، Vimeo یا ویدیوی HTML5
+                                </p>
+                            </div>
+                        </div>
+                    `;
+
+                    // Add spinning animation
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes spin {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+
+                    // Animate back in
+                    gsap.to(videoPlaceholder, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        }
+
+        // Enhanced smooth scrolling with GSAP
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: target,
+                        ease: "power2.inOut"
+                    });
+                }
+            });
+        });
+
+        // Enhanced navbar scroll effect
+        let isScrolled = false;
+        gsap.to({}, {
+            duration: 0.1,
+            repeat: -1,
+            onRepeat: function () {
+                const shouldScroll = window.scrollY > 100;
+                if (shouldScroll !== isScrolled) {
+                    isScrolled = shouldScroll;
+                    const navbar = document.getElementById('navbar');
+
+                    gsap.to(navbar, {
+                        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.95)' : 'rgba(0, 0, 0, 0.8)',
+                        backdropFilter: isScrolled ? 'blur(50px)' : 'blur(30px)',
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                }
+            }
+        });
+
+        // Mouse movement parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            // Move floating spheres
+            gsap.to('.floating-sphere', {
+                x: (mouseX - 0.5) * 50,
+                y: (mouseY - 0.5) * 50,
+                duration: 0.5,
+                ease: "power2.out",
+                stagger: 0.1
+            });
+
+            // Move 3D footballs
+            if (footballs.length > 0) {
+                footballs.forEach((football, index) => {
+                    const intensity = 0.5 + index * 0.1;
+                    gsap.to(football.position, {
+                        x: football.position.x + (mouseX - 0.5) * intensity,
+                        z: football.position.z + (mouseY - 0.5) * intensity,
+                        duration: 1,
+                        ease: "power2.out"
+                    });
+                });
+            }
+
+            fbxSphereModels.forEach(fbxSphereModel => {
+                // Parallax for FBX replacement model
+                if (fbxSphereModel) {
+                    const intensity = 1.0;
+                    gsap.to(fbxSphereModel.position, {
+                        x: (mouseX - 0.5) * intensity * 2 * ((Math.random() - 0.5) * 20),
+                        z: (mouseY - 0.5) * intensity * 2 * ((Math.random() - 0.5) * 20),
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
+                }
+            })
+
+        });
+
+        // Enhanced pricing card 3D effect with GSAP
+        const pricingCard = document.querySelector('.pricing-card');
+        if (pricingCard) {
+            pricingCard.addEventListener('mousemove', (e) => {
+                const rect = pricingCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                gsap.to(pricingCard, {
+                    rotationX: rotateX,
+                    rotationY: rotateY,
+                    transformPerspective: 1000,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            pricingCard.addEventListener('mouseleave', () => {
+                gsap.to(pricingCard, {
+                    rotationX: 0,
+                    rotationY: 0,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // Enhanced button click animations
+        function handlePurchase() {
+            const button = event.target;
+
+            // Scale down animation
+            gsap.to(button, {
+                scale: 0.95,
+                duration: 0.1,
+                ease: "power2.out",
+                onComplete: function () {
+                    // Scale back up with bounce
+                    gsap.to(button, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "back.out(1.7)",
+                        onComplete: function () {
+                            // Show alert with fade in effect
+                            const alertDiv = document.createElement('div');
+                            alertDiv.style.cssText = `
+                                position: fixed;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                background: linear-gradient(135deg, #1a1a2e, #16213e);
+                                color: #fff;
+                                padding: 2rem;
+                                border-radius: 20px;
+                                border: 2px solid rgba(0, 255, 135, 0.3);
+                                backdrop-filter: blur(20px);
+                                z-index: 10000;
+                                text-align: center;
+                                opacity: 0;
+                                scale: 0.8;
+                                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                            `;
+                            alertDiv.innerHTML = `
+                                <h3 style="margin-bottom: 1rem; color: #00ff87;">در حال انتقال به صفحه پرداخت</h3>
+                                <p style="margin-bottom: 1.5rem;">شما در حال خرید هنر قهرمانان به قیمت ۷۰۰ هزارتومان هستید</p>
+                                <div style="width: 40px; height: 40px; border: 3px solid #00ff87; border-top: 3px solid transparent; border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;"></div>
+                            `;
+
+                            document.body.appendChild(alertDiv);
+
+                            // Animate alert in
+                            gsap.to(alertDiv, {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 0.5,
+                                ease: "back.out(1.7)"
+                            });
+
+                            // Remove alert after 3 seconds
+                            setTimeout(() => {
+                                gsap.to(alertDiv, {
+                                    opacity: 0,
+                                    scale: 0.8,
+                                    duration: 0.3,
+                                    ease: "power2.in",
+                                    onComplete: () => alertDiv.remove()
+                                });
+                            }, 3000);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Scroll-triggered animations for hero parallax
+        gsap.to('.hero-slider', {
+            yPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: '.hero-slider',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // Floating elements animation
+        gsap.to('.floating-sphere', {
+            y: -30,
+            duration: 2,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+            stagger: 0.5
+        });
+
+        // Add hover effects to all buttons
+        gsap.utils.toArray('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, {
+                    y: -3,
+                    scale: 1.05,
+                    boxShadow: '0 20px 50px rgba(0, 255, 135, 0.5)',
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, {
+                    y: 0,
+                    scale: 1,
+                    boxShadow: '0 15px 35px rgba(0, 255, 135, 0.4)',
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Add card hover animations
+        gsap.utils.toArray('.problem-card, .feature, .testimonial').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -15,
+                    scale: 1.02,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Window resize handler for 3D scene
+        window.addEventListener('resize', () => {
+            if (camera && renderer) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        });
+
+        // Performance optimization - reduce animations on mobile
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+            // Reduce 3D objects for mobile performance
+            footballs.forEach((football, index) => {
+                if (index > 3) {
+                    scene.remove(football);
+                    footballs.splice(index, 1);
+                }
+            });
+
+            // Reduce particle count
+            particles.forEach(particle => {
+                const positions = particle.geometry.attributes.position;
+                const newCount = Math.floor(positions.count / 3);
+                particle.geometry.setDrawRange(0, newCount);
+            });
+        }
+
+        // Loading screen animation
+        window.addEventListener('load', () => {
+            gsap.to('body', {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+
+
+        });
+
+
+
+        console.log('🚀 هنر قهرمانان - بهبود یافته با انیمیشن‌های GSAP و Three.js با موفقیت بارگذاری شد!');
+
+        // Right-side timeline behavior
+        (function initSideTimeline() {
+            const dots = Array.from(document.querySelectorAll('.side-timeline .dot'));
+            const targets = dots
+                .map(d => document.querySelector(d.getAttribute('data-target')))
+                .filter(Boolean);
+
+            // Click -> smooth scroll
+            dots.forEach((dot) => {
+                dot.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const selector = dot.getAttribute('data-target');
+                    const section = document.querySelector(selector);
+                    if (!section) return;
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Observe sections to update active state
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = '#' + entry.target.id;
+                    const dot = dots.find(d => d.getAttribute('data-target') === id);
+                    if (!dot) return;
+                    if (entry.isIntersecting) {
+                        dots.forEach(d => d.classList.remove('active'));
+                        dot.classList.add('active');
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -60% 0px',
+                threshold: 0.25
+            });
+
+            targets.forEach(section => observer.observe(section));
+
+            // Set initial active based on current scroll
+            const setInitial = () => {
+                let activeSet = false;
+                for (let i = 0; i < targets.length; i++) {
+                    const rect = targets[i].getBoundingClientRect();
+                    if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4) {
+                        dots.forEach(d => d.classList.remove('active'));
+                        dots[i].classList.add('active');
+                        activeSet = true;
+                        break;
+                    }
+                }
+                if (!activeSet) {
+                    dots.forEach(d => d.classList.remove('active'));
+                    dots[0]?.classList.add('active');
+                }
+            };
+            setInitial();
+            window.addEventListener('scroll', () => {
+                // throttle via rAF
+                if (initSideTimeline._ticking) return;
+                initSideTimeline._ticking = true;
+                requestAnimationFrame(() => {
+                    setInitial();
+                    initSideTimeline._ticking = false;
+                });
+            }, { passive: true });
+        })();
+    </script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBZGfd-fcfgNorjGF1_y4rUY8dsJ1E1I9w",
+      authDomain: "ifootballdrillz.firebaseapp.com",
+      projectId: "ifootballdrillz",
+      storageBucket: "ifootballdrillz.firebasestorage.app",
+      messagingSenderId: "1012204925161",
+      appId: "1:1012204925161:web:1e63f57e769b3f83224078",
+      measurementId: "G-8SB7WBKF3J"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+</body>
+
+</html>

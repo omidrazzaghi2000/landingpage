@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art of Champions - Elite Football Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00ff87, #60efff);
+            --secondary-gradient: linear-gradient(135deg, #667eea, #764ba2);
+            --dark-gradient: linear-gradient(135deg, #1a1a2e, #16213e, #0f0f0f);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(30px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(50px);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -8px;
+            left: 0;
+            background: var(--primary-gradient);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Slider Section */
+        .hero-slider {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2300ff87;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%2360efff;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="%23000"/><circle cx="300" cy="200" r="150" fill="url(%23g1)" opacity="0.3"/><circle cx="900" cy="600" r="200" fill="url(%23g1)" opacity="0.2"/></svg>');
+        }
+
+        .slide-2 {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="%23000"/><polygon points="200,100 400,300 100,400" fill="url(%23g2)" opacity="0.3"/><polygon points="800,200 1100,400 700,600" fill="url(%23g2)" opacity="0.2"/></svg>');
+        }
+
+        .slide-3 {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23ff6b6b;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%23ffa726;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="%23000"/><rect x="100" y="150" width="300" height="200" fill="url(%23g3)" opacity="0.3" rx="20"/><rect x="800" y="400" width="250" height="150" fill="url(%23g3)" opacity="0.2" rx="15"/></svg>');
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            z-index: 10;
+            position: relative;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            text-shadow: 0 20px 40px rgba(0, 255, 135, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        
+        .hero-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--primary-gradient);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px rgba(0, 255, 135, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.02em;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 255, 135, 0.5);
+        }
+
+        /* Slider Controls */
+        .slider-nav {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 20;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .slider-dot.active {
+            background: var(--primary-gradient);
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(0, 255, 135, 0.5);
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 120px 2rem;
+            background: var(--dark-gradient);
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .video-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 3rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #fff;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 255, 135, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 255, 135, 0.5);
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 25px solid #000;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            margin-left: 5px;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 120px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #fff, #b0b0b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--dark-gradient);
+            margin: 0 -2rem;
+            padding: 120px 2rem;
+        }
+        
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .problem-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .problem-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 255, 135, 0.3);
+        }
+        
+        .problem-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .problem-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #00ff87;
+            letter-spacing: 0.01em;
+        }
+        
+        .problem-description {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Timeline Section for Modules */
+        .timeline-section {
+            background: var(--dark-gradient);
+            margin: 0 -2rem;
+            padding: 120px 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, transparent, var(--primary-gradient), transparent);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            max-width: 500px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 255, 135, 0.5);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -32px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -32px;
+        }
+
+        .module-number {
+            font-family: 'Orbitron', sans-serif;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .module-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60efff;
+            letter-spacing: -0.01em;
+        }
+        
+        .module-description {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .module-stats {
+            display: flex;
+            gap: 2rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .module-stats span {
+            background: rgba(0, 255, 135, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 135, 0.2);
+        }
+
+        /* Solution Section */
+        .solution-section {
+            text-align: center;
+        }
+        
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .feature {
+            padding: 3rem 2rem;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 255, 135, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .feature:hover::before {
+            opacity: 1;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: rgba(0, 255, 135, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 255, 135, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #00ff87;
+            filter: drop-shadow(0 10px 20px rgba(0, 255, 135, 0.3));
+        }
+        
+        .feature-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            letter-spacing: 0.01em;
+        }
+        
+        .feature-description {
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+            margin: 0 -2rem;
+            padding: 120px 2rem;
+        }
+        
+        .pricing-card {
+            max-width: 600px;
+            margin: 4rem auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border-radius: 35px;
+            padding: 4rem 3rem;
+            border: 2px solid rgba(0, 255, 135, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 255, 135, 0.1), transparent);
+            animation: rotate 6s linear infinite;
+        }
+        
+        .pricing-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .current-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .price-subtitle {
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 3rem 0;
+            text-align: left;
+        }
+        
+        .features-list li {
+            padding: 1rem 0;
+            color: #b0b0b0;
+            position: relative;
+            padding-left: 2.5rem;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ff87;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: var(--dark-gradient);
+            margin: 0 -2rem;
+            padding: 120px 2rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .testimonial {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 255, 135, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .testimonial-author {
+            color: #00ff87;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 80px 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: #00ff87;
+        }
+        
+        .footer-copyright {
+            color: #666;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .current-price {
+                font-size: 4rem;
+            }
+
+            .timeline-line {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                margin-left: 40px;
+            }
+
+            .timeline-content {
+                margin: 0;
+            }
+
+            .timeline-content::before {
+                left: -32px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="logo">Art of Champions</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#video">Intro</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Slider Section -->
+    <section class="hero-slider" id="home">
+        <div class="slider-container">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Art of Champions</h1>
+            <p class="hero-subtitle">Elite Football Training System</p>
+            <p class="hero-description">
+                The systematic training approach that develops individual brilliance scouts look for in young players. 
+                Transform your child's game with professional techniques used by champions.
+            </p>
+            <a href="#pricing" class="cta-button">Start Training - €170</a>
+        </div>
+
+        <div class="slider-nav">
+            <div class="slider-dot active" onclick="currentSlide(1)"></div>
+            <div class="slider-dot" onclick="currentSlide(2)"></div>
+            <div class="slider-dot" onclick="currentSlide(3)"></div>
+        </div>
+    </section>
+
+    <!-- Video Introduction Section -->
+    <section class="video-section" id="video">
+        <div class="video-container">
+            <h2 class="video-title">Watch the Training in Action</h2>
+            <p style="color: #b0b0b0; font-size: 1.2rem; margin-bottom: 2rem;">
+                See how our systematic approach transforms young players into confident dribblers
+            </p>
+            
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <div class="play-button" onclick="playVideo()">
+                        <div class="play-icon"></div>
+                    </div>
+                    <p style="color: #b0b0b0; font-size: 1.1rem;">Click to watch the introduction video</p>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">Duration: 3:42</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
+        <div class="section">
+            <h2 class="section-title">Why Some Young Players Make It Look Effortless</h2>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <span class="problem-icon">⚡</span>
+                    <h3 class="problem-title">Match Day Pressure</h3>
+                    <p class="problem-description">
+                        Most young players struggle to perform under match pressure. They look brilliant during practice sessions but disappear when it matters most. Their confidence evaporates the moment defenders start closing in.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">🎯</span>
+                    <h3 class="problem-title">The Academy Trap</h3>
+                    <p class="problem-description">
+                        Most academies focus almost entirely on team tactics and formation play. Individual skill development becomes secondary to fitting into the system, creating predictable players.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">🧠</span>
+                    <h3 class="problem-title">Intelligence Gap</h3>
+                    <p class="problem-description">
+                        The most technically perfect young players often plateau at higher levels. They can execute every move flawlessly but fail when those moves need strategic application during matches.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section section" id="solution">
+        <h2 class="section-title">Your Solution: Art of Champions System</h2>
+        <p style="text-align: center; color: #b0b0b0; font-size: 1.3rem; margin-bottom: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            The same system that trained 10 professional players and coached over 500 young athletes to excellence.
+        </p>
+        
+        <div class="solution-features">
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h3 class="feature-title">Pressure Training</h3>
+                <p class="feature-description">Specific drills that build pressure resistance from day one, making real match situations feel comfortable</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎪</div>
+                <h3 class="feature-title">Game Context Learning</h3>
+                <p class="feature-description">Every technique is taught within real game situations, not isolated cone drills</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Decision Speed</h3>
+                <p class="feature-description">Every movement builds decision-making speed alongside technical skills</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">Football Intelligence</h3>
+                <p class="feature-description">Understanding not just how to execute techniques, but when each one is most effective</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Modules Section -->
+    <section class="timeline-section" id="modules">
+        <div class="section">
+            <h2 class="section-title">5 Specialized Modules - 210+ Drills</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="module-number">Module 1</div>
+                        <h3 class="module-title">Art of Body Feints</h3>
+                        <p class="module-description">
+                            Master direction changing with correct techniques to dribble past opponents with finesse. 
+                            Learn the art of deception through body movement and develop unstoppable change of pace.
+                        </p>
+                        <div class="module-stats">
+                            <span>3 Weeks Training</span>
+                            <span>42 Drills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="module-number">Module 2</div>
+                        <h3 class="module-title">Art of Movement</h3>
+                        <p class="module-description">
+                            Discover Messi's signature moves and the secret behind his agility. Learn ball control mastery 
+                            and the mechanism that makes dribbling look effortless against fast defenders.
+                        </p>
+                        <div class="module-stats">
+                            <span>4 Weeks Training</span>
+                            <span>37 Drills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="module-number">Module 3</div>
+                        <h3 class="module-title">Art of Stepovers</h3>
+                        <p class="module-description">
+                            Master stepover techniques to keep ball possession when surrounded by opponents. 
+                            Learn secret combinations that make opponents go the opposite way and create separation.
+                        </p>
+                        <div class="module-stats">
+                            <span>2 Weeks Training</span>
+                            <span>32 Drills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="module-number">Module 4</div>
+                        <h3 class="module-title">Art of Creativity</h3>
+                        <p class="module-description">
+                            Unlock Cristiano Ronaldo's tricks for making dribbling fast, simple, and effective. 
+                            Learn his signature moves and skill combinations that make his dribbling style unique.
+                        </p>
+                        <div class="module-stats">
+                            <span>6 Weeks Training</span>
+                            <span>100 Drills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="module-number">Module 5</div>
+                        <h3 class="module-title">Art of V-Style</h3>
+                        <p class="module-description">
+                            Master the secret technique that makes players better than their peers, even against stronger opponents. 
+                            Learn V-style combinations for a unique and versatile dribbling approach.
+                        </p>
+                        <div class="module-stats">
+                            <span>3 Weeks Training</span>
+                            <span>36 Drills</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"My son improved dramatically within 6 weeks. He's now the star player on his team and his confidence has skyrocketed."</p>
+                    <p class="testimonial-author">- Sarah Johnson, Parent</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"This course was the best investment for my child's football future. The techniques are professional level but easy to understand."</p>
+                    <p class="testimonial-author">- Mark Williams, Parent</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The drills I learned really helped me in important matches. I can now dribble past defenders with confidence."</p>
+                    <p class="testimonial-author">- Alex Thompson, 14-year-old Player</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="section">
+            <h2 class="section-title">Get Instant Access to Art of Champions</h2>
+            <div class="pricing-card">
+                <div class="pricing-content">
+                    <p class="old-price">Original Price: €200</p>
+                    <h3 class="current-price">€170</h3>
+                    <p class="price-subtitle">One-time payment - Lifetime access</p>
+                    
+                    <ul class="features-list">
+                        <li>5 Complete specialized modules</li>
+                        <li>210+ Professional training drills</li>
+                        <li>Exclusive mobile app access</li>
+                        <li>Step-by-step video guides</li>
+                        <li>Free lifetime updates</li>
+                        <li>Full support included</li>
+                        <li>30-day money-back guarantee</li>
+                    </ul>
+                    
+                    <a href="#" class="cta-button" onclick="handlePurchase()">Get Instant Access - €170</a>
+                    <p style="color: #666; font-size: 0.95rem; margin-top: 1.5rem;">Next price: €200</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Support</a>
+                <a href="#">Refund Policy</a>
+            </div>
+            <p class="footer-copyright">© 2025 Art of Champions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Slider functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-advance slides
+        setInterval(nextSlide, 5000);
+
+        // Video functionality
+        function playVideo() {
+            const videoWrapper = document.querySelector('.video-wrapper');
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+            
+            // In a real implementation, you would replace this with actual video
+            videoPlaceholder.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #1a1a2e;">
+                    <div style="text-align: center; color: #b0b0b0;">
+                        <h3 style="margin-bottom: 1rem;">Video Player</h3>
+                        <p>Replace this with your actual video embed code</p>
+                        <p style="font-size: 0.9rem; margin-top: 1rem;">
+                            Example: YouTube, Vimeo, or HTML5 video
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Timeline animation
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, Array.from(entry.target.parentNode.children).indexOf(entry.target) * 200);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Intersection Observer for other animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize observers when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                timelineObserver.observe(item);
+            });
+
+            // Other animated elements
+            const animatedElements = document.querySelectorAll('.problem-card, .feature, .testimonial');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(el);
+            });
+        });
+
+        // Handle purchase button click
+        function handlePurchase() {
+            const button = event.target;
+            button.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+                alert('Redirecting to secure payment...\n\nYou are about to purchase Art of Champions for €170.');
+            }, 150);
+        }
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSlider = document.querySelector('.hero-slider');
+            const rate = scrolled * -0.3;
+            
+            if (heroSlider && scrolled < window.innerHeight) {
+                heroSlider.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Pricing card 3D effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const pricingCard = document.querySelector('.pricing-card');
+            
+            if (pricingCard) {
+                pricingCard.addEventListener('mousemove', (e) => {
+                    const rect = pricingCard.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 15;
+                    const rotateY = (centerX - x) / 15;
+                    
+                    pricingCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                
+                pricingCard.addEventListener('mouseleave', () => {
+                    pricingCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

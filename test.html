@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Graham - Web Designer & Art Director</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .profile-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .profile-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .overlay-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        }
+        .name {
+            font-size: 3rem;
+            margin: 0;
+            line-height: 1;
+        }
+        .title {
+            font-size: 1.2rem;
+            margin: 5px 0 0;
+            font-weight: normal;
+        }
+        .social-links {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #000;
+            font-size: 0.9rem;
+        }
+        .social-links a {
+            color: #000;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img src="./assets/images/person.png" alt="Alex Graham" class="profile-image">
+        <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+        <div class="overlay-text">
+            <h1 class="name">Ahmadreza Falsafi</h1>
+            <p class="title">// Web Designer<br>Art Director</p>
+        </div>
+    </div>
+</body>
+</html>
