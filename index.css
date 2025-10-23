@@ -733,7 +733,7 @@
   .problem-section {
       background: var(--dark-gradient);
       margin: 0 0rem;
-      padding: 120px 2rem;
+      padding: 0px 2rem;
       position: relative;
   }
 
@@ -1224,7 +1224,7 @@
   
   .price-subtitle {
       color: #b0b0b0;
-      margin-bottom: 3rem;
+      /* margin-bottom: 3rem; */
       font-size: 1.2rem;
       font-family: 'TitrBold';
       opacity: 0;
@@ -1261,7 +1261,7 @@
   .testimonials-section {
       background: var(--dark-gradient);
       margin: 0 0rem;
-      padding: 120px 2rem;
+      padding: 1px 0rem;
   }
 
   @media (max-width: 768px) {
@@ -1280,7 +1280,8 @@
   .tweets-section {
       background: radial-gradient(circle at center, #0b0b0b 0%, #000 100%);
       margin: 0 0rem;
-      padding: 120px 2rem 80px;
+      /* padding: 120px 2rem 80px; */
+      padding: 1px 0rem;
   }
 
   @media (max-width: 768px) {
@@ -1390,7 +1391,7 @@
 
   @keyframes tweets-marquee {
       0% { transform: translateX(0); }
-      100% { transform: translateX(+500%); }
+      100% { transform: translateX(+100%); }
   }
   
   /* New slider layout */
@@ -1624,8 +1625,8 @@
 
   .mobile-app{
       display: grid;
-      grid-template-columns: 520px 1fr;
-      gap: 3rem;
+      grid-template-columns: 780px 1fr;
+      gap: 1rem;
       align-items: center;
   }
 
@@ -1655,8 +1656,8 @@
 
   .phone{
       position: relative;
-      width: 360px;
-      height: 740px;
+      width: 300px;
+      height: 540px;
       border-radius: 42px;
       background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.15);
@@ -1671,7 +1672,7 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 180px;
+      width: 0px;
       height: 28px;
       background: rgba(0,0,0,0.85);
       border-bottom-left-radius: 16px;
@@ -1709,7 +1710,8 @@
 
   .app-screens-grid{
       display: grid;
-      grid-template-columns: repeat(2, minmax(180px, 1fr));
+      /* grid-template-columns: repeat(2, minmax(180px, 1fr)); */
+      grid-template-columns: repeat(2, minmax(70px, 150px));
       gap: 1.25rem;
   }
 
@@ -1941,3 +1943,88 @@
           transform: translate(-50%, 100%) translateY(2px);
       }
   }
+
+@media (min-width: 1200px) {
+  /* کوچکتر کردن عنوان‌ها */
+  .hero-title {
+    font-size: 4.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+  }
+  .video-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .current-price {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+  }
+  /* کوچکتر کردن توضیحات */
+  .hero-description,
+  .feature-description,
+  .problem-description,
+  .module-description,
+  .testimonial-text,
+  .price-subtitle {
+    font-size: 1rem;
+  }
+  /* کاهش padding و margin بخش‌های اصلی */
+  .hero-slider,
+  .section,
+  .video-section,
+  
+  
+  
+  .pricing-section {
+    padding: 0px 3.5rem;
+  }
+  .pricing-card {
+    padding: 2.5rem 1.5rem;
+    max-width: 65vw;
+    margin-block: 0;
+  }
+  .problem-card,
+  .feature,
+  .timeline-content {
+    padding: 2rem 1.2rem;
+  }
+  /* دکمه‌ها */
+  .cta-button {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+  /* ابعاد عناصر تزئینی */
+  .floating-sphere {
+    width: 70px;
+    height: 70px;
+  }
+  /* تصاویر ماژول */
+  /* .module-image-container {
+    width: 180px;
+    height: 180px;
+  } */
+
+  .solution-section.image{
+    width: 30vw;
+  }
+
+  .testimonials-track {
+    
+    animation: testimonials-marquee 40s linear infinite;
+    }
+
+    .section{
+        padding:60px 0rem;
+    }
+
+    .timeline-section{
+        padding: 0;
+    }
+
+    .features-list{
+        margin-block: 0;
+    }
+}
