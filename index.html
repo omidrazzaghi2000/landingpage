@@ -609,6 +609,87 @@
     </section>
     <!-- END Video Testimonials Carousel -->
 
+    <section class="video-grid-section" id="customer-video-testimonials" aria-label="ویدیوهای مشتریان">
+      <h2 class="section-title">ویدیوهای مشتریان</h2>
+
+      <div class="video-grid">
+        <article class="video-card">
+          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-1.png" muted>
+            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" type="video/mp4">
+          </video>
+          <div class="video-meta"><h3>ANIA</h3><p>FASHION DIRECTOR</p></div>
+        </article>
+
+        <article class="video-card">
+          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-2.png" muted>
+            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" type="video/mp4">
+          </video>
+          <div class="video-meta"><h3>KAITY</h3><p>CREATIVE LEAD</p></div>
+        </article>
+
+        <article class="video-card">
+          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
+            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9wy7a6VEDq/origin_7KbRNd0Glqh2a55buy9ozOVoGuR2QatgFX4h916g.mp4" type="video/mp4">
+          </video>
+          <div class="video-meta"><h3>OAKES</h3><p>PRODUCT DESIGNER</p></div>
+        </article>
+
+        <article class="video-card">
+          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
+            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/nKoN40N3Jw/origin_M2YXryo1x5sNDZYVAhvXsz7JYREhWZAljSqoqYnQ.mp4" type="video/mp4">
+          </video>
+          <div class="video-meta"><h3>LAUREN</h3><p>ART DIRECTOR</p></div>
+        </article>
+
+        <article class="video-card">
+          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
+            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9b473o7YJe/origin_dykAlsuWhwlyjr73syktr2Hj7O4jEIEJMUD61kXR.mp4" type="video/mp4">
+          </video>
+          <div class="video-meta"><h3>SMITHEE</h3><p>PHOTOGRAPHER</p></div>
+        </article>
+      </div>
+
+      <p class="video-grid-note">
+        <a href="#testimonial" class="btn-link" aria-label="مشاهده همه نظرات">مشاهده همه نظرات مشتریان</a>
+      </p>
+    </section>
+
+    <script>
+      (function initCustomerVideoGrid() {
+        const section = document.getElementById('customer-video-testimonials');
+        if (!section) return;
+
+        const cards = section.querySelectorAll('.video-card');
+        const videos = section.querySelectorAll('video');
+
+        videos.forEach(v => {
+          v.muted = true;
+          v.loop = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+        });
+
+        function pauseOthers(active) {
+          videos.forEach(v => { if (v !== active) v.pause(); });
+        }
+
+        cards.forEach(card => {
+          const v = card.querySelector('video');
+          card.addEventListener('mouseenter', () => { pauseOthers(v); v.play().catch(() => {}); });
+          card.addEventListener('mouseleave', () => v.pause());
+          card.addEventListener('click', () => {
+            if (v.paused) { pauseOthers(v); v.play().catch(() => {}); }
+            else { v.pause(); }
+          });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => { if (!entry.isIntersecting) videos.forEach(v => v.pause()); });
+        }, { threshold: 0.2 });
+        observer.observe(section);
+      })();
+    </script>
+
     <!-- Pricing Section -->
     <section class="pricing-section" id="pricing" >
         <div class="section">

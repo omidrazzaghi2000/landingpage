@@ -1,4 +1,4 @@
-  /* Video Testimonials Carousel */
+/* Video Testimonials Carousel */
   .video-testimonials {
       background: var(--dark-gradient);
       margin: 0 0rem;
@@ -149,6 +149,75 @@
           height: 38px;
       }
   }
+
+  /* Customer Video Testimonials Grid */
+  .video-grid-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+  .video-grid-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .video-card {
+    position: relative;
+    background: #101318;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+  }
+  .grid-video {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+  }
+  .video-meta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 80%);
+    padding: .75rem 1rem;
+    color: #eaeaea;
+    text-align: left;
+  }
+  .video-meta h3 {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: .08em;
+  }
+  .video-meta p {
+    margin: .25rem 0 0;
+    font-size: .85rem;
+    color: #b0b0b0;
+  }
+  .video-grid-note {
+    margin-top: 1rem;
+    color: #b0b0b0;
+  }
+  .video-grid-note .btn-link {
+    color: #7fc7ff;
+    text-decoration: none;
+  }
+  .video-grid-note .btn-link:hover {
+    text-decoration: underline;
+  }
+  /* End Customer Video Testimonials Grid */
 
 @font-face {
     font-family: 'TitrBold';
