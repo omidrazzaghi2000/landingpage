@@ -15,6 +15,66 @@
     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
     <script src="https://unpkg.com/fflate@0.8.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js"></script>
+    <style>
+      /* Customer video grid play/pause overlay */
+      .video-grid .video-card {
+        position: relative;
+      }
+      .video-grid .play-toggle {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 2;
+        opacity: 0;
+        transform: scale(0.96);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+      .video-grid .video-card:hover .play-toggle,
+      .video-grid .video-card.is-playing .play-toggle {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .video-grid .play-toggle .icon {
+        width: 44px;
+        height: 44px;
+        fill: #00ff87;
+        filter: drop-shadow(0 6px 18px rgba(0, 255, 135, 0.45));
+      }
+      .video-grid .play-toggle .icon-pause {
+        display: none;
+      }
+      .video-grid .video-card.is-playing .play-toggle .icon-play {
+        display: none;
+      }
+      .video-grid .video-card.is-playing .play-toggle .icon-pause {
+        display: block;
+      }
+      .video-grid .play-toggle .loading-spinner {
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        border: 3px solid rgba(0, 255, 135, 0.45);
+        border-top-color: transparent;
+        border-radius: 50%;
+        display: none;
+        animation: vg-spin 1s linear infinite;
+      }
+      .video-grid .video-card.is-loading .play-toggle .loading-spinner {
+        display: inline-block;
+      }
+      .video-grid .video-card.is-loading .play-toggle .icon {
+        opacity: 0.3;
+      }
+      @keyframes vg-spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
 
 </head>
 
@@ -528,8 +588,8 @@
                     <div class="vt-track">
                         <div class="vt-slide active" data-index="0">
                             <div class="vt-card">
-                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-1.png" muted>
-                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" type="video/mp4">
+                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-1.png" muted>
+                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" type="video/mp4">
                                 </video>
                                 <div class="vt-caption">
                                     <!-- <div class="vt-flag"><img src="https://flagsapi.com/DE/shiny/64.png" alt="DE"></div> -->
@@ -540,8 +600,8 @@
                         </div>
                         <div class="vt-slide" data-index="1">
                             <div class="vt-card">
-                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-2.png" muted>
-                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" type="video/mp4">
+                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-2.png" muted>
+                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" type="video/mp4">
                                 </video>
                                 <div class="vt-caption">
                                     <!-- <div class="vt-flag"><img src="https://flagsapi.com/ES/shiny/64.png" alt="ES"></div> -->
@@ -552,8 +612,8 @@
                         </div>
                         <div class="vt-slide" data-index="2">
                             <div class="vt-card">
-                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
-                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9wy7a6VEDq/origin_7KbRNd0Glqh2a55buy9ozOVoGuR2QatgFX4h916g.mp4" type="video/mp4">
+                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
+                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9wy7a6VEDq/origin_7KbRNd0Glqh2a55buy9ozOVoGuR2QatgFX4h916g.mp4" type="video/mp4">
                                 </video>
                                 <div class="vt-caption">
                                     <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
@@ -564,8 +624,8 @@
                         </div>
                         <div class="vt-slide" data-index="3">
                             <div class="vt-card">
-                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
-                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/nKoN40N3Jw/origin_M2YXryo1x5sNDZYVAhvXsz7JYREhWZAljSqoqYnQ.mp4" type="video/mp4">
+                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
+                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/nKoN40N3Jw/origin_M2YXryo1x5sNDZYVAhvXsz7JYREhWZAljSqoqYnQ.mp4" type="video/mp4">
                                 </video>
                                 <div class="vt-caption">
                                     <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
@@ -576,8 +636,8 @@
                         </div>
                         <div class="vt-slide" data-index="4">
                             <div class="vt-card">
-                                <video class="vt-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
-                                    <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9b473o7YJe/origin_dykAlsuWhwlyjr73syktr2Hj7O4jEIEJMUD61kXR.mp4" type="video/mp4">
+                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
+                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9b473o7YJe/origin_dykAlsuWhwlyjr73syktr2Hj7O4jEIEJMUD61kXR.mp4" type="video/mp4">
                                 </video>
                                 <div class="vt-caption">
                                     <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
@@ -614,44 +674,68 @@
 
       <div class="video-grid">
         <article class="video-card">
-          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-1.png" muted>
-            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" type="video/mp4">
+          <video class="grid-video" playsinline preload="none" poster="./assets/images/slide-1.png" muted>
+            <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" type="video/mp4">
           </video>
-          <div class="video-meta"><h3>ANIA</h3><p>FASHION DIRECTOR</p></div>
+          <!-- Center Play/Pause + Loading -->
+          <button class="play-toggle" type="button" aria-label="Play">
+            <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="8,5 19,12 8,19"></polygon></svg>
+            <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="5" height="14"></rect><rect x="13" y="5" width="5" height="14"></rect></svg>
+            <span class="loading-spinner" aria-hidden="true"></span>
+          </button>
+          <div class="video-meta"><h3>Louis</h3><p></p></div>
         </article>
 
         <article class="video-card">
-          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-2.png" muted>
-            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" type="video/mp4">
+          <video class="grid-video" playsinline preload="none" poster="./assets/images/slide-2.png" muted>
+            <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" type="video/mp4">
           </video>
-          <div class="video-meta"><h3>KAITY</h3><p>CREATIVE LEAD</p></div>
+          <button class="play-toggle" type="button" aria-label="Play">
+            <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="8,5 19,12 8,19"></polygon></svg>
+            <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="5" height="14"></rect><rect x="13" y="5" width="5" height="14"></rect></svg>
+            <span class="loading-spinner" aria-hidden="true"></span>
+          </button>
+          <div class="video-meta"><h3>دینو</h3><p>بازیکن اسپانیول</p></div>
         </article>
 
         <article class="video-card">
-          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
-            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9wy7a6VEDq/origin_7KbRNd0Glqh2a55buy9ozOVoGuR2QatgFX4h916g.mp4" type="video/mp4">
+          <video class="grid-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
+            <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9wy7a6VEDq/origin_7KbRNd0Glqh2a55buy9ozOVoGuR2QatgFX4h916g.mp4" type="video/mp4">
           </video>
-          <div class="video-meta"><h3>OAKES</h3><p>PRODUCT DESIGNER</p></div>
+          <button class="play-toggle" type="button" aria-label="Play">
+            <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="8,5 19,12 8,19"></polygon></svg>
+            <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="5" height="14"></rect><rect x="13" y="5" width="5" height="14"></rect></svg>
+            <span class="loading-spinner" aria-hidden="true"></span>
+          </button>
+          <div class="video-meta"><h3></h3><p></p></div>
         </article>
 
         <article class="video-card">
-          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
-            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/nKoN40N3Jw/origin_M2YXryo1x5sNDZYVAhvXsz7JYREhWZAljSqoqYnQ.mp4" type="video/mp4">
+          <video class="grid-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
+            <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/nKoN40N3Jw/origin_M2YXryo1x5sNDZYVAhvXsz7JYREhWZAljSqoqYnQ.mp4" type="video/mp4">
           </video>
-          <div class="video-meta"><h3>LAUREN</h3><p>ART DIRECTOR</p></div>
+          <button class="play-toggle" type="button" aria-label="Play">
+            <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="8,5 19,12 8,19"></polygon></svg>
+            <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="5" height="14"></rect><rect x="13" y="5" width="5" height="14"></rect></svg>
+            <span class="loading-spinner" aria-hidden="true"></span>
+          </button>
+          <div class="video-meta"><h3></h3><p></p></div>
         </article>
 
         <article class="video-card">
-          <video class="grid-video" playsinline preload="metadata" poster="./assets/images/slide-3.jpg" muted>
-            <source src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9b473o7YJe/origin_dykAlsuWhwlyjr73syktr2Hj7O4jEIEJMUD61kXR.mp4" type="video/mp4">
+          <video class="grid-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
+            <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9b473o7YJe/origin_dykAlsuWhwlyjr73syktr2Hj7O4jEIEJMUD61kXR.mp4" type="video/mp4">
           </video>
-          <div class="video-meta"><h3>SMITHEE</h3><p>PHOTOGRAPHER</p></div>
+          <button class="play-toggle" type="button" aria-label="Play">
+            <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="8,5 19,12 8,19"></polygon></svg>
+            <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="5" height="14"></rect><rect x="13" y="5" width="5" height="14"></rect></svg>
+            <span class="loading-spinner" aria-hidden="true"></span>
+          </button>
+          <div class="video-meta"><h3></h3><p></p></div>
         </article>
       </div>
 
-      <p class="video-grid-note">
-        <a href="#testimonial" class="btn-link" aria-label="مشاهده همه نظرات">مشاهده همه نظرات مشتریان</a>
-      </p>
+      
     </section>
 
     <script>
@@ -659,14 +743,29 @@
         const section = document.getElementById('customer-video-testimonials');
         if (!section) return;
 
-        const cards = section.querySelectorAll('.video-card');
-        const videos = section.querySelectorAll('video');
+        const cards = Array.from(section.querySelectorAll('.video-card'));
+        const videos = Array.from(section.querySelectorAll('video'));
+
+        // Helper: load src from data-src once
+        function ensureLoaded(video) {
+          if (!video) return;
+          const source = video.querySelector('source');
+          if (!source) return;
+          const hasSrc = source.getAttribute('src');
+          if (!hasSrc) {
+            const dataSrc = source.getAttribute('data-src');
+            if (dataSrc) {
+              source.setAttribute('src', dataSrc);
+              video.load();
+            }
+          }
+        }
 
         videos.forEach(v => {
           v.muted = true;
           v.loop = true;
           v.playsInline = true;
-          v.preload = 'metadata';
+          v.preload = 'none';
         });
 
         function pauseOthers(active) {
@@ -675,18 +774,51 @@
 
         cards.forEach(card => {
           const v = card.querySelector('video');
-          card.addEventListener('mouseenter', () => { pauseOthers(v); v.play().catch(() => {}); });
-          card.addEventListener('mouseleave', () => v.pause());
-          card.addEventListener('click', () => {
-            if (v.paused) { pauseOthers(v); v.play().catch(() => {}); }
-            else { v.pause(); }
+          const btn = card.querySelector('.play-toggle');
+
+          // Hover play/pause
+          card.addEventListener('mouseenter', () => {
+            ensureLoaded(v);
+            pauseOthers(v);
+            v.play().catch(() => {});
           });
+          card.addEventListener('mouseleave', () => v.pause());
+
+          // Center button toggle
+          if (btn) {
+            btn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              ensureLoaded(v);
+              if (v.paused) { pauseOthers(v); v.play().catch(() => {}); }
+              else { v.pause(); }
+            });
+          }
+
+          // Loading visibility
+          v.addEventListener('waiting', () => card.classList.add('is-loading'));
+          ['canplay', 'loadeddata', 'playing'].forEach(ev =>
+            v.addEventListener(ev, () => card.classList.remove('is-loading'))
+          );
+
+          // Icon state
+          v.addEventListener('play', () => { card.classList.add('is-playing'); btn?.setAttribute('aria-label', 'Pause'); });
+          v.addEventListener('pause', () => { card.classList.remove('is-playing'); btn?.setAttribute('aria-label', 'Play'); });
         });
 
-        const observer = new IntersectionObserver(entries => {
+        // Lazy-load when cards become visible
+        const cardObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const v = entry.target.querySelector('video');
+            if (entry.isIntersecting) ensureLoaded(v);
+          });
+        }, { threshold: 0.3 });
+        cards.forEach(card => cardObserver.observe(card));
+
+        // Pause all when section not visible
+        const sectionObserver = new IntersectionObserver(entries => {
           entries.forEach(entry => { if (!entry.isIntersecting) videos.forEach(v => v.pause()); });
         }, { threshold: 0.2 });
-        observer.observe(section);
+        sectionObserver.observe(section);
       })();
     </script>
 
@@ -1315,28 +1447,41 @@
             const thumbs = Array.from(document.querySelectorAll('.vt-thumb'));
             if (!track || slides.length === 0) return;
 
+            // Helper to ensure the slide's video src is set from data-src
+            function ensureLoaded(video) {
+                if (!video) return;
+                const source = video.querySelector('source');
+                if (!source) return;
+                const hasSrc = source.getAttribute('src');
+                if (!hasSrc) {
+                    const dataSrc = source.getAttribute('data-src');
+                    if (dataSrc) {
+                        source.setAttribute('src', dataSrc);
+                        video.load();
+                    }
+                }
+            }
+
             let index = 0;
 
             function updateActive(newIndex) {
-                // Clamp index
                 index = (newIndex + slides.length) % slides.length;
-                // Update transform
                 track.style.transform = `translateX(${index * 100}%)`;
-                // Update slide classes and play/pause
+
                 slides.forEach((slide, i) => {
                     slide.classList.toggle('active', i === index);
                     const video = slide.querySelector('.vt-video');
                     if (!video) return;
                     if (i === index) {
+                        ensureLoaded(video);
                         video.currentTime = 0;
                         video.play().catch(() => {});
                     } else {
                         video.pause();
                     }
                 });
-                // Update dots
+
                 dots.forEach((d, i) => d.classList.toggle('active', i === index));
-                // Update thumbs
                 if (thumbs.length) {
                     thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
                 }
@@ -1346,24 +1491,20 @@
             next?.addEventListener('click', () => updateActive(index + 1));
             dots.forEach(d => d.addEventListener('click', () => updateActive(parseInt(d.dataset.index))));
 
-            // Thumbnail click triggers
             thumbs.forEach(t => {
                 t.addEventListener('click', () => updateActive(parseInt(t.dataset.index)));
                 t.addEventListener('keydown', e => { if(e.key === 'Enter') updateActive(parseInt(t.dataset.index)); });
             });
 
-            // Pause on slide click toggle
             slides.forEach(slide => {
                 const video = slide.querySelector('.vt-video');
                 video?.addEventListener('click', () => {
+                    ensureLoaded(video);
                     if (video.paused) video.play().catch(() => {}); else video.pause();
                 });
             });
 
-            // Auto-advance every 40s (optional, considered user-inactive)
             setInterval(() => updateActive(index + 1), 40000);
-
-            // Start
             updateActive(0);
         })();
 
