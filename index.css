@@ -457,7 +457,7 @@
       overflow: hidden;
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: center;
       text-align: right;
       padding: 100px;
   }
@@ -465,7 +465,7 @@
   @media (max-width: 768px) {
       .hero-slider {
           padding: 60px 20px;
-          text-align: center;
+          text-align: right;
       }
   }
 
@@ -491,7 +491,7 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 0.4);
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 0.4);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
