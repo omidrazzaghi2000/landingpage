@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>هنر قهرمانان - آموزش حرفه‌ای فوتبال</title>
-    <link
+    <!-- <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"> -->
     <link rel="stylesheet" href="index.css">
     <link href="https://framerusercontent.com/images/WaE9y1q8u84RBhVkrUOim42h24I.png" rel="icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -163,10 +163,10 @@
         </div>
 
         <div class="hero-content" style="text-align: center;">
-            <p class="hero-subtitle" style="font-family: 'TitrMedium';margin-bottom: 0px;">پدرها و مادرهای کودکان ۷ سال تا ۱۵ سال ...</p>
-            <p class="hero-subtitle" style="font-family: 'TitrMedium';">چگونه به فرزندتان مهارت‌های فردی را آموزش بدهید که درهای فوتبال حرفه‌ای را به رویش باز کند</p>
+            <p class="hero-subtitle" style="font-family: 'EstedadRegular';margin-bottom: 0px;">پدرها و مادرهای کودکان ۷ سال تا ۱۵ سال ...</p>
+            <p class="hero-subtitle" style="font-family: 'EstedadRegular';">چگونه به فرزندتان مهارت‌های فردی را آموزش بدهید که درهای فوتبال حرفه‌ای را به رویش باز کند</p>
             <h1 class="hero-title" style="font-family: 'TitrBold';">هنر قهرمانان</h1>
-            <p class="hero-subtitle" style="font-family: 'TitrMedium';">سیستم آموزش حرفه‌ای فوتبال</p>
+            <p class="hero-subtitle" style="font-family: 'EstedadRegular';">سیستم آموزش حرفه‌ای فوتبال</p>
             <p class="hero-description" style="font-family: 'EstedadRegular';"">
                 روش سیستماتیک آموزشی که استعدادهای فردی را توسعه می‌دهد و همان چیزی را که استعدادیاب‌ها در بازیکنان جوان می‌جویند، ایجاد می‌کند. 
                 بازی فرزندتان را با تکنیک‌های حرفه‌ای مورد استفاده قهرمانان، متحول کنید.
@@ -1182,7 +1182,7 @@
                 scale: 1,
                 rotation: 0,
                 duration: 0.2,
-                y:window.innerWidth > 768 ? -20 : 0,
+                y:window.innerWidth > 768 ? -50 : 0,
                 ease: "back.out(1.7)"
             })
             .to('.coach-name', {
@@ -1208,7 +1208,7 @@
                 opacity: 1,
                 y: window.innerWidth > 768 ? -80 : 0,
                 x: 0,
-                duration: 0.2,
+                duration: 0.5,
                 stagger: 0.2,
                 ease: "power3.out"
             }, "-=0.4");
@@ -1251,34 +1251,34 @@
             .to('.problem-section .section-title', {
                 opacity: 1,
                 y: 0,
-                duration: 0.6,//1.2,
+                duration: 0.3,//1.2,
                 ease: "power3.out"
             })
             .to('.problem-card', {
                 opacity: 1,
                 y: 0,
                 rotationX: 0,
-                duration: 0.75,//1.5,
+                duration: 0.35,//1.5,
                 stagger: 0.2,
                 ease: "power3.out",
                 onComplete: function () {
                     gsap.to('.problem-icon', {
                         scale: 1,
-                        duration: 0.8,
+                        duration: 0.4,
                         stagger: 0.1,
                         ease: "back.out(1.7)"
                     });
                     gsap.to('.problem-title', {
                         opacity: 1,
                         x: 0,
-                        duration: 0.5,//1,
+                        duration: 0.2,//1,
                         stagger: 0.1,
                         ease: "power3.out"
                     });
                     gsap.to('.problem-description', {
                         opacity: 1,
                         y: 0,
-                        duration: 0.6,//1.2,
+                        duration: 0.4,//1.2,
                         stagger: 0.1,
                         ease: "power3.out"
                     });
@@ -1484,45 +1484,45 @@
             .to('.pricing-section .section-title', {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
+                duration: 0.5,
                 ease: "power3.out"
             })
             .to('.pricing-card', {
                 opacity: 1,
                 rotationX: 0,
                 scale: 1,
-                duration: 1.5,
+                duration: 0.4,
                 ease: "power3.out"
             }, "-=0.5")
             .to('.old-price', {
                 opacity: 1,
                 y: 0,
-                duration: 1,
+                duration: 0.3,
                 ease: "power3.out"
             }, "-=0.8")
             .to('.current-price', {
                 opacity: 1,
                 scale: 1,
-                duration: 1.2,
+                duration: 0.6,
                 ease: "back.out(1.7)"
             }, "-=0.6")
             .to('.price-subtitle', {
                 opacity: 1,
                 y: 0,
-                duration: 1,
+                duration: 0.1,
                 ease: "power3.out"
             }, "-=0.4")
             .to('.features-list li', {
                 opacity: 1,
                 x: 0,
-                duration: 1,
+                duration: 0.4,
                 stagger: 0.1,
                 ease: "power3.out"
             }, "-=0.2")
             .to('.next-price', {
                 opacity: 1,
                 y: 0,
-                duration: 1,
+                duration: 0.3,
                 ease: "power3.out"
             }, "-=0.3");
 
@@ -1859,34 +1859,34 @@
         // Enhanced pricing card 3D effect with GSAP
         const pricingCard = document.querySelector('.pricing-card');
         if (pricingCard) {
-            pricingCard.addEventListener('mousemove', (e) => {
-                const rect = pricingCard.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+            // pricingCard.addEventListener('mousemove', (e) => {
+            //     const rect = pricingCard.getBoundingClientRect();
+            //     const x = e.clientX - rect.left;
+            //     const y = e.clientY - rect.top;
 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+            //     const centerX = rect.width / 2;
+            //     const centerY = rect.height / 2;
 
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
+            //     const rotateX = (y - centerY) / 20;
+            //     const rotateY = (centerX - x) / 20;
 
-                gsap.to(pricingCard, {
-                    rotationX: rotateX,
-                    rotationY: rotateY,
-                    transformPerspective: 1000,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            });
+            //     gsap.to(pricingCard, {
+            //         rotationX: rotateX,
+            //         rotationY: rotateY,
+            //         transformPerspective: 1000,
+            //         duration: 0.3,
+            //         ease: "power2.out"
+            //     });
+            // });
 
-            pricingCard.addEventListener('mouseleave', () => {
-                gsap.to(pricingCard, {
-                    rotationX: 0,
-                    rotationY: 0,
-                    duration: 0.5,
-                    ease: "power2.out"
-                });
-            });
+            // pricingCard.addEventListener('mouseleave', () => {
+            //     gsap.to(pricingCard, {
+            //         rotationX: 0,
+            //         rotationY: 0,
+            //         duration: 0.5,
+            //         ease: "power2.out"
+            //     });
+            // });
         }
 
         // Enhanced button click animations
