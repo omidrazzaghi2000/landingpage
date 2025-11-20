@@ -466,12 +466,14 @@
       .hero-slider {
           padding: 60px 20px;
           text-align: right;
+          padding-top: 0;
       }
   }
 
   @media (max-width: 480px) {
       .hero-slider {
           padding: 40px 15px;
+          padding-top: 0;
       }
   }
 
@@ -871,6 +873,7 @@
   @media (max-width: 480px) {
       .coach-intro-section {
           padding: 60px 0.8rem;
+          padding-bottom: 0;
       }
   }
 
@@ -1318,6 +1321,7 @@
           transform: none !important;
           bottom: auto !important;
           left: auto !important;
+          margin-top: 0;
       }
 
       .coach-image-wrapper {
@@ -1325,6 +1329,19 @@
           transform: none !important;
           top: auto !important;
           left: auto !important;
+      }
+
+      .coach-stats{
+        margin-bottom: 0;
+      }
+
+      .coach-intro-container{
+        gap: 1rem;
+        padding-bottom: 0;
+      }
+
+      .caoch-intro-section{
+        padding-bottom: 0;
       }
   }
 
