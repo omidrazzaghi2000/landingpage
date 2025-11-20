@@ -1181,33 +1181,34 @@
                 opacity: 1,
                 scale: 1,
                 rotation: 0,
-                duration: 1,
+                duration: 0.2,
+                y:window.innerWidth > 768 ? -20 : 0,
                 ease: "back.out(1.7)"
             })
             .to('.coach-name', {
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 0.2,
                 ease: "power3.out"
             }, "-=0.5")
             .to('.coach-title', {
                 opacity: 1,
                 y: 0,
-                duration: 0.7,
+                duration: 0.2,
                 ease: "power3.out"
             }, "-=0.4")
             .to('.stat-item', {
                 opacity: 1,
                 scale: 1,
-                duration: 0.6,
+                duration: 0.2,
                 stagger: 0.15,
                 ease: "back.out(1.7)"
             }, "-=0.3")
             .to('.coach-text-item', {
                 opacity: 1,
-                y: 0,
+                y: window.innerWidth > 768 ? -80 : 0,
                 x: 0,
-                duration: 0.8,
+                duration: 0.2,
                 stagger: 0.2,
                 ease: "power3.out"
             }, "-=0.4");
@@ -1389,12 +1390,12 @@
                 .to(imageContainer, {
                     scale: 1,
                     opacity: 1,
-                    duration: 0.6,
+                    duration: 0.4,
                     ease: "back.out(1.7)"
                 }, "-=0.3")
                 .to(content, {
                     x: 0,
-                    duration: 0.8,
+                    duration: 0.3,
                     ease: "power3.out"
                 }, "-=0.5")
                 .to(content.querySelector('::before'), {
@@ -1405,30 +1406,30 @@
                 .to(content.querySelector('.module-number'), {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.3,
                     ease: "power3.out"
                 }, "-=0.6")
                 .to(content.querySelector('.module-title'), {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.3,
                     ease: "power3.out"
                 }, "-=0.8")
                 .to(content.querySelector('.module-description'), {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.3,
                     ease: "power3.out"
                 }, "-=0.6")
                 .to(content.querySelector('.module-stats'), {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.3,
                     ease: "power3.out"
                 }, "-=0.4")
                 .to(content.querySelectorAll('.module-stats span'), {
                     scale: 1,
-                    duration: 0.8,
+                    duration: 0.2,
                     stagger: 0.1,
                     ease: "back.out(1.7)"
                 }, "-=0.5");
