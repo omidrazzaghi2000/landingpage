@@ -111,22 +111,30 @@
         <button class="dot" data-target="#home" aria-label="خانه">
             <span class="label">خانه</span>
         </button>
-        <!-- <button class="dot" data-target="#video" aria-label="معرفی">
-            <span class="label">معرفی</span>
-        </button> -->
-        <button class="dot" data-target="#app" aria-label="اپلیکیشن">
-            <span class="label">اپلیکیشن</span>
-        </button>
-        <button class="dot" data-target="#modules" aria-label="ماژول‌ها">
-            <span class="label">ماژول‌ها</span>
-        </button>
-        
         <button class="dot" data-target="#problem" aria-label="مشکل">
             <span class="label">مشکل</span>
         </button>
+        
+        <button class="dot" data-target="#coach-intro" aria-label="مربی">
+            <span class="label">مربی</span>
+        </button>
+
         <button class="dot" data-target="#solution" aria-label="راه‌حل">
             <span class="label">راه‌حل</span>
         </button>
+        <!-- <button class="dot" data-target="#video" aria-label="معرفی">
+            <span class="label">معرفی</span>
+        </button> -->
+        <button class="dot" data-target="#modules" aria-label="ماژول‌ها">
+            <span class="label">ماژول‌ها</span>
+        </button>
+
+        <button class="dot" data-target="#app" aria-label="اپلیکیشن">
+            <span class="label">اپلیکیشن</span>
+        </button>
+        
+        
+        
         <button class="dot" data-target="#testimonial" aria-label="نظرات">
             <span class="label">نظرات</span>
         </button>
@@ -231,6 +239,58 @@
         </div>
     </section>
 
+    <!-- Coach Introduction Section -->
+    <section class="coach-intro-section" id="coach-intro">
+        <div class="coach-intro-container">
+            <div class="coach-image-wrapper">
+                <div class="coach-image-glow"></div>
+                <div class="coach-image-frame">
+                    <img src="./assets/images/person.png" alt="احمدرضا فلسفی" class="coach-image">
+                    <div class="coach-image-border"></div>
+                </div>
+            </div>
+            
+            <div class="coach-content">
+                <h2 class="coach-name">احمدرضا فلسفی</h2>
+                <p class="coach-title">مربی حرفه‌ای فوتبال</p>
+                
+                <div class="coach-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">۱۵+</div>
+                        <div class="stat-label">سال تجربه</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">۲۰+</div>
+                        <div class="stat-label">تورنمنت برنده</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">۵۰۰+</div>
+                        <div class="stat-label">بازیکن آموزش داده</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">۱۰</div>
+                        <div class="stat-label">بازیکن حرفه‌ای</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="coach-text-wrapper">
+                <div class="coach-text-item coach-text-1">
+                    <p>اسم من احمدرضا فلسفی است و بیش از ۱۵ سال است که دقیقاً در حال مطالعه‌ی این موضوع هستم که چرا این اتفاق می‌افتد.</p>
+                </div>
+                <div class="coach-text-item coach-text-2">
+                    <p>من در بیش از ۲۰ تورنمنت آزاد فوتبال برنده شده‌ام و بیش از ۵۰۰ بازیکن را آموزش داده‌ام.</p>
+                </div>
+                <div class="coach-text-item coach-text-3">
+                    <p>۱۰ نفر از این بازیکنان اکنون به صورت حرفه‌ای رقابت می‌کنند.</p>
+                </div>
+                <div class="coach-text-item coach-text-4">
+                    <p>و آنچه کشف کردم، طرز فکر شما در مورد توسعه‌ی فوتبال جوانان را برای همیشه تغییر خواهد داد.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Solution Section -->
     <section class="solution-section section" id="solution">
         <img class="solution-section image" src="./assets/images/aoc_5_farsi.png">
@@ -266,55 +326,7 @@
         </div>
     </section>
 
-    <!-- Mobile App Showcase Section -->
-    <section class="mobile-app-section" id="app">
-        <div class="section">
-            <h2 class="section-title">اپلیکیشن موبایل هنر قهرمانان</h2>
-            <p class="app-subtitle">تمرین‌ها، برنامه هفتگی و پیگیری پیشرفت – همیشه در جیب شما</p>
-
-            <div class="mobile-app">
-                <div class="phone-wrap">
-                    <div class="phone">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="ma-carousel" aria-label="اسکرین‌های اپلیکیشن">
-                                <button class="ma-nav ma-prev" aria-label="قبلی">‹</button>
-                                <div class="ma-viewport">
-                                    <div class="ma-track">
-                                        <div class="ma-slide active" data-index="0">
-                                            <img src="./assets/images/app-slider-1.png" alt="صفحه خانه اپلیکیشن">
-                                        </div>
-                                        <div class="ma-slide" data-index="1">
-                                            <img src="./assets/images/app-slider-2.png" alt="لیست تمرین‌ها">
-                                        </div>
-                                        <div class="ma-slide" data-index="2">
-                                            <img src="./assets/images/app-slider-3.png" alt="جزئیات تمرین">
-                                        </div>
-                                        <div class="ma-slide" data-index="3">
-                                            <img src="./assets/images/app-slider-4.png" alt="جزئیات تمرین">
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="ma-nav ma-next" aria-label="بعدی">›</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glow"></div>
-                </div>
-
-                <div class="app-screens-grid" aria-hidden="true">
-                    <div class="app-card tilt-1"><img src="./assets/images/map-1.jpg" alt="نمونه اسکرین ۱"></div>
-                    <div class="app-card tilt-2"><img src="./assets/images/map-2.jpg" alt="نمونه اسکرین ۲"></div>
-                    <div class="app-card tilt-3"><img src="./assets/images/program-1.jpg" alt="نمونه اسکرین ۳"></div>
-                    <div class="app-card tilt-4"><img src="./assets/images/program-2.jpg" alt="نمونه اسکرین ۴"></div>
-                </div>
-            </div>
-
-            <div class="app-cta">
-                <a href="#pricing" class="cta-button">دریافت اپلیکیشن</a>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Timeline Modules Section -->
     <section class="timeline-section" id="modules">
@@ -419,7 +431,55 @@
 
     
 
-    
+    <!-- Mobile App Showcase Section -->
+    <section class="mobile-app-section" id="app">
+        <div class="section">
+            <h2 class="section-title">اپلیکیشن موبایل هنر قهرمانان</h2>
+            <p class="app-subtitle">تمرین‌ها، برنامه هفتگی و پیگیری پیشرفت – همیشه در جیب شما</p>
+
+            <div class="mobile-app">
+                <div class="phone-wrap">
+                    <div class="phone">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="ma-carousel" aria-label="اسکرین‌های اپلیکیشن">
+                                <button class="ma-nav ma-prev" aria-label="قبلی">‹</button>
+                                <div class="ma-viewport">
+                                    <div class="ma-track">
+                                        <div class="ma-slide active" data-index="0">
+                                            <img src="./assets/images/app-slider-1.png" alt="صفحه خانه اپلیکیشن">
+                                        </div>
+                                        <div class="ma-slide" data-index="1">
+                                            <img src="./assets/images/app-slider-2.png" alt="لیست تمرین‌ها">
+                                        </div>
+                                        <div class="ma-slide" data-index="2">
+                                            <img src="./assets/images/app-slider-3.png" alt="جزئیات تمرین">
+                                        </div>
+                                        <div class="ma-slide" data-index="3">
+                                            <img src="./assets/images/app-slider-4.png" alt="جزئیات تمرین">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="ma-nav ma-next" aria-label="بعدی">›</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glow"></div>
+                </div>
+
+                <div class="app-screens-grid" aria-hidden="true">
+                    <div class="app-card tilt-1"><img src="./assets/images/map-1.jpg" alt="نمونه اسکرین ۱"></div>
+                    <div class="app-card tilt-2"><img src="./assets/images/map-2.jpg" alt="نمونه اسکرین ۲"></div>
+                    <div class="app-card tilt-3"><img src="./assets/images/program-1.jpg" alt="نمونه اسکرین ۳"></div>
+                    <div class="app-card tilt-4"><img src="./assets/images/program-2.jpg" alt="نمونه اسکرین ۴"></div>
+                </div>
+            </div>
+
+            <div class="app-cta">
+                <a href="#pricing" class="cta-button">دریافت اپلیکیشن</a>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -1107,6 +1167,49 @@
                 duration: 0.8,
                 ease: "power3.out"
             }, "-=0.3");
+
+        // Coach Introduction Section Animations
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.coach-intro-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+            .to('.coach-image-frame', {
+                opacity: 1,
+                scale: 1,
+                rotation: 0,
+                duration: 1,
+                ease: "back.out(1.7)"
+            })
+            .to('.coach-name', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.5")
+            .to('.coach-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power3.out"
+            }, "-=0.4")
+            .to('.stat-item', {
+                opacity: 1,
+                scale: 1,
+                duration: 0.6,
+                stagger: 0.15,
+                ease: "back.out(1.7)"
+            }, "-=0.3")
+            .to('.coach-text-item', {
+                opacity: 1,
+                y: 0,
+                x: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power3.out"
+            }, "-=0.4");
 
         // Video Section Animations
         gsap.timeline({
