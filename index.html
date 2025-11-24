@@ -139,7 +139,7 @@
         <button class="dot" data-target="#testimonial" aria-label="نظرات">
             <span class="label">نظرات</span>
         </button>
-        <button class="dot" data-target="#video-testimonials" aria-label="ویدیوها">
+        <button class="dot" data-target="#customer-video-testimonials" aria-label="ویدیوها">
             <span class="label">ویدیوها</span>
         </button>
         <button class="dot" data-target="#pricing" aria-label="قیمت">
@@ -551,6 +551,37 @@
                         <p class="testimonial-text">"تمریناتی که یاد گرفتم واقعاً در مسابقات مهم به من کمک کردند. اکنون می‌توانم با اعتماد به نفس از مدافعان دریبل کنم."</p>
                         <p class="testimonial-author">- الکس تامپسون، بازیکن ۱۴ ساله</p>
                     </div>
+                    <!-- duplicated for seamless infinite loop -->
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/5.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="France" aria-label="France">
+                                <img src="https://flagsapi.com/FL/shiny/64.png" alt="France flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"پسرم در عرض ۶ هفته به طور چشمگیری پیشرفت کرد. اکنون او بازیکن ستاره تیمش است و اعتماد به نفسش به شدت افزایش یافته است."</p>
+                        <p class="testimonial-author">- سارا جانسون، والدین</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/6.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="Italy" aria-label="Italy">
+                                <img src="https://flagsapi.com/NL/shiny/64.png" alt="Italy flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"این دوره بهترین سرمایه‌گذاری برای آینده فوتبالی فرزندم بود. تکنیک‌ها در سطح حرفه‌ای هستند اما درک آن‌ها آسان است."</p>
+                        <p class="testimonial-author">- مارک ویلیامز، والدین</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-media">
+                            <img src="./assets/images/7.jpg" alt="تصویر کاربر/توییت" loading="lazy">
+                            <span class="testimonial-country" title="Netherlands" aria-label="Netherlands">
+                                <img src="https://flagcdn.com/w24/nl.png" alt="Netherlands flag">
+                            </span>
+                        </div>
+                        <p class="testimonial-text">"تمریناتی که یاد گرفتم واقعاً در مسابقات مهم به من کمک کردند. اکنون می‌توانم با اعتماد به نفس از مدافعان دریبل کنم."</p>
+                        <p class="testimonial-author">- الکس تامپسون، بازیکن ۱۴ ساله</p>
+                    </div>
                 </div>
             </div>
             
@@ -645,96 +676,7 @@
     </section>
     </section>
 
-    <!-- Video Testimonials Carousel -->
-    <section class="video-testimonials" id="video-testimonials">
-        <div class="">
-            <h2 class="" style="text-align: center;margin-block: 10px;font-size: 2.5rem;">ویدیوها</h2>
-            <div class="vt-carousel" aria-label="کاروسل ویدیوهای نظرات">
-                <button class="vt-nav vt-prev" aria-label="قبلی">‹</button>
-                <div class="vt-viewport">
-                    <div class="vt-track">
-                        <div class="vt-slide active" data-index="0">
-                            <div class="vt-card">
-                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-1.png" muted>
-                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4" type="video/mp4">
-                                </video>
-                                <div class="vt-caption">
-                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/DE/shiny/64.png" alt="DE"></div> -->
-                                    <!-- <div class="vt-text">ترجمه: این دوره بازی من را متحول کرد. فوق‌العاده کاربردی.</div>
-                                    <div class="vt-author">@max_football · Berlin</div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vt-slide" data-index="1">
-                            <div class="vt-card">
-                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-2.png" muted>
-                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4" type="video/mp4">
-                                </video>
-                                <div class="vt-caption">
-                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/ES/shiny/64.png" alt="ES"></div> -->
-                                    <!-- <div class="vt-text">ترجمه: ساختار تمرین‌ها عالیه، پسرم عاشقشه.</div>
-                                    <div class="vt-author">@maria_parent · Madrid</div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vt-slide" data-index="2">
-                            <div class="vt-card">
-                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
-                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9wy7a6VEDq/origin_7KbRNd0Glqh2a55buy9ozOVoGuR2QatgFX4h916g.mp4" type="video/mp4">
-                                </video>
-                                <div class="vt-caption">
-                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
-                                    <!-- <div class="vt-text">ترجمه: توضیحات ساده ولی نتیجه حرفه‌ای. عالی بود.</div> -->
-                                    <!-- <div class="vt-author">@coach_liam · London</div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vt-slide" data-index="3">
-                            <div class="vt-card">
-                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
-                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/nKoN40N3Jw/origin_M2YXryo1x5sNDZYVAhvXsz7JYREhWZAljSqoqYnQ.mp4" type="video/mp4">
-                                </video>
-                                <div class="vt-caption">
-                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
-                                    <!-- <div class="vt-text">ترجمه: توضیحات ساده ولی نتیجه حرفه‌ای. عالی بود.</div> -->
-                                    <!-- <div class="vt-author">@coach_liam · London</div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vt-slide" data-index="4">
-                            <div class="vt-card">
-                                <video class="vt-video" playsinline preload="none" poster="./assets/images/slide-3.jpg" muted>
-                                    <source data-src="https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/9b473o7YJe/origin_dykAlsuWhwlyjr73syktr2Hj7O4jEIEJMUD61kXR.mp4" type="video/mp4">
-                                </video>
-                                <div class="vt-caption">
-                                    <!-- <div class="vt-flag"><img src="https://flagsapi.com/GB/shiny/64.png" alt="GB"></div> -->
-                                    <!-- <div class="vt-text">ترجمه: توضیحات ساده ولی نتیجه حرفه‌ای. عالی بود.</div> -->
-                                    <!-- <div class="vt-author">@coach_liam · London</div> -->
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <button class="vt-nav vt-next" aria-label="بعدی">›</button>
-            </div>
-            <div class="vt-thumbnails" style="display: flex; flex-direction: row; gap: 14px; margin: 20px auto; justify-content: center; align-items: center; max-width: 700px;">
-                <img src="./assets/images/slide-1.png" class="vt-thumb active" data-index="0" alt="ویدیو ۱" style="width: 84px; height: 48px; object-fit: cover; cursor: pointer; border-radius: 7px; border: 2px solid #00ff87;">
-                <img src="./assets/images/slide-2.png" class="vt-thumb" data-index="1" alt="ویدیو ۲" style="width: 84px; height: 48px; object-fit: cover; cursor: pointer; border-radius: 7px; border: 2px solid transparent;">
-                <img src="./assets/images/slide-3.jpg" class="vt-thumb" data-index="2" alt="ویدیو ۳" style="width: 84px; height: 48px; object-fit: cover; cursor: pointer; border-radius: 7px; border: 2px solid transparent;">
-                <img src="./assets/images/slide-3.jpg" class="vt-thumb" data-index="3" alt="ویدیو ۴" style="width: 84px; height: 48px; object-fit: cover; cursor: pointer; border-radius: 7px; border: 2px solid transparent;">
-                <img src="./assets/images/slide-3.jpg" class="vt-thumb" data-index="4" alt="ویدیو ۵" style="width: 84px; height: 48px; object-fit: cover; cursor: pointer; border-radius: 7px; border: 2px solid transparent;">
-            </div>
-            <div class="vt-dots" style="margin-block: 50px;padding-bottom: 50px;" role="tablist" aria-label="انتخاب اسلاید">
-                <button class="vt-dot active" data-index="0" aria-label="اسلاید ۱"></button>
-                <button class="vt-dot" data-index="1" aria-label="اسلاید ۲"></button>
-                <button class="vt-dot" data-index="2" aria-label="اسلاید ۳"></button>
-                <button class="vt-dot" data-index="3" aria-label="اسلاید ۴"></button>
-                <button class="vt-dot" data-index="4" aria-label="اسلاید ۵"></button>
-            </div>
-        </div>
-    </section>
-    <!-- END Video Testimonials Carousel -->
+    
 
     <section class="video-grid-section" id="customer-video-testimonials" aria-label="ویدیوهای مشتریان">
       <h2 class="section-title">ویدیوهای مشتریان</h2>
@@ -1548,6 +1490,20 @@
                 ease: "power3.out"
             }, "-=0.5");
 
+
+            gsap.timeline({
+            scrollTrigger: {
+                trigger: '.video-grid-section',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+            }).to('.section-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.5");
+
         // Video testimonials carousel controls
         (function initVideoTestimonials() {
             const track = document.querySelector('.vt-track');
@@ -1594,6 +1550,7 @@
 
                 dots.forEach((d, i) => d.classList.toggle('active', i === index));
                 if (thumbs.length) {
+                    
                     thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
                 }
             }
