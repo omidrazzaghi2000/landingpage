@@ -151,11 +151,12 @@
   }
 
   /* Customer Video Testimonials Grid */
-  .video-grid-section {
+.video-grid-section {
     max-width: 1200px;
     margin: 4rem auto;
     padding: 0 1rem;
     text-align: center;
+  position: relative;
   }
   .video-grid-section .section-title {
     font-size: 2rem;
@@ -255,6 +256,44 @@
     font-size: .85rem;
     color: #b0b0b0;
   }
+.mobile-audio-toggle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease, color 0.2s ease;
+  display: none;
+  z-index: 3;
+}
+.mobile-audio-toggle[aria-pressed="true"] {
+  background: var(--primary-gradient);
+  color: #000;
+  border-color: transparent;
+}
+@media (max-width: 768px) {
+  .mobile-audio-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+.audio-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: none;
+}
+.mobile-audio-toggle[aria-pressed="false"] .audio-icon-on,
+.mobile-audio-toggle[aria-pressed="true"] .audio-icon-off {
+  display: block;
+}
   .video-grid-note {
     margin-top: 1rem;
     color: #b0b0b0;
