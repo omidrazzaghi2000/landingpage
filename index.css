@@ -164,9 +164,9 @@
   }
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1rem;
-    grid-auto-rows: 320px
+    grid-auto-rows: 640px
   }
   .video-card {
     position: relative;
