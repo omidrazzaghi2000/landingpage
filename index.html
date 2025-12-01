@@ -448,6 +448,15 @@
         
       </section>
 
+      <!-- Video Modal overlay -->
+      <div class="video-modal" id="video-modal" style="position: fixed;margin-inline: auto;">
+        <div class="video-modal-backdrop" id="video-modal-backdrop"></div>
+        <div class="video-modal-content">
+          <button class="video-modal-close" id="video-modal-close" aria-label="بستن">&times;</button>
+          <div class="video-modal-body" id="video-modal-body"></div>
+        </div>
+      </div>
+
     
 
     
@@ -723,32 +732,38 @@
           article.className = 'video-card';
 
           article.innerHTML = `
-            <video class="grid-video" playsinline preload="none" poster="${videoData.thumbnail}" muted>
+            <video class="grid-video" playsinline preload="none" poster="${videoData.thumbnail}" muted >
               <source data-src="${videoData.videoUrl}" type="video/mp4">
             </video>
-            <button class="mobile-audio-toggle" type="button" aria-pressed="false" aria-label="فعال کردن صدا">
-              <svg class="audio-icon audio-icon-on" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 10v4h4l5 4V6l-5 4H3z"></path>
-                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03z"></path>
-                <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
-              </svg>
-              <svg class="audio-icon audio-icon-off" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63z"></path>
-                <path d="M19 12c0 1.9-.68 3.63-1.82 4.98l1.42 1.42C20.03 16.56 21 14.39 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71z"></path>
-                <path d="M3 10v4h4l5 4V6l-5 4H3z"></path>
-                <path d="M4.27 3L3 4.27 7.73 9H3v6h4l5 4v-6.73l4.73 4.73 1.27-1.27L4.27 3z"></path>
-              </svg>
-            </button>
             <button class="play-toggle" type="button" aria-label="Play">
               <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="8,5 19,12 8,19"></polygon></svg>
               <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="5" height="14"></rect><rect x="13" y="5" width="5" height="14"></rect></svg>
               <span class="loading-spinner" aria-hidden="true"></span>
             </button>
-            <div class="video-meta">
-              <h3>${videoData.title || ''}</h3>
-              <p>${videoData.description || ''}</p>
-            </div>
-          `;
+            `
+            // <button class="mobile-audio-toggle" type="button" aria-pressed="false" aria-label="فعال کردن صدا">
+            //   <svg class="audio-icon audio-icon-on" viewBox="0 0 24 24" aria-hidden="true">
+            //     <path d="M3 10v4h4l5 4V6l-5 4H3z"></path>
+            //     <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03z"></path>
+            //     <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+            //   </svg>
+            //   <svg class="audio-icon audio-icon-off" viewBox="0 0 24 24" aria-hidden="true">
+            //     <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63z"></path>
+            //     <path d="M19 12c0 1.9-.68 3.63-1.82 4.98l1.42 1.42C20.03 16.56 21 14.39 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71z"></path>
+            //     <path d="M3 10v4h4l5 4V6l-5 4H3z"></path>
+            //     <path d="M4.27 3L3 4.27 7.73 9H3v6h4l5 4v-6.73l4.73 4.73 1.27-1.27L4.27 3z"></path>
+            //   </svg>
+            // </button>
+            // <button class="play-toggle" type="button" aria-label="Play">
+            //   <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="8,5 19,12 8,19"></polygon></svg>
+            //   <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="5" height="14"></rect><rect x="13" y="5" width="5" height="14"></rect></svg>
+            //   <span class="loading-spinner" aria-hidden="true"></span>
+            // </button>
+            // <div class="video-meta">
+            //   <h3>${videoData.title || ''}</h3>
+            //   <p>${videoData.description || ''}</p>
+            // </div>
+          ;
 
           return article;
         }
@@ -819,25 +834,44 @@
           videos.forEach(v => { if (v !== active) v.pause(); });
         }
 
-        cards.forEach(card => {
+        cards.forEach((card,idx) => {
           const v = card.querySelector('video');
           const btn = card.querySelector('.play-toggle');
 
           // Hover play/pause
-          card.addEventListener('mouseenter', () => {
-            ensureLoaded(v);
-            pauseOthers(v);
-            v.play().catch(() => {});
-          });
-          card.addEventListener('mouseleave', () => v.pause());
+        //   card.addEventListener('mouseenter', () => {
+        //     ensureLoaded(v);
+        //     pauseOthers(v);
+        //     v.play().catch(() => {});
+        //   });
+        //   card.addEventListener('mouseleave', () => v.pause());
 
           // Center button toggle
           if (btn) {
             btn.addEventListener('click', (e) => {
-              e.stopPropagation();
-              ensureLoaded(v);
-              if (v.paused) { pauseOthers(v); v.play().catch(() => {}); }
-              else { v.pause(); }
+            //   e.stopPropagation();
+            //   ensureLoaded(v);
+            //   if (v.paused) { pauseOthers(v); v.play().catch(() => {}); }
+            //   else { v.pause(); }
+
+
+              // اطلاعات ویدیو را از DOM یا videosData استخراج کن
+          
+          let info = { title: '', description: '', videoUrl: '', thumbnail: '' };
+          // اگر videosData در اسکوپ هست (اکثر مواقع هست)
+          if (typeof videosData !== 'undefined' && videosData[idx]) {
+            info = videosData[idx];
+          } else {
+            const source = v.querySelector('source');
+            info = {
+              title: (card.querySelector('.video-meta h3')||{}).innerText||'',
+              description: (card.querySelector('.video-meta p')||{}).innerText||'',
+              videoUrl: source ? (source.getAttribute('data-src')||source.getAttribute('src')) : '',
+              thumbnail: v.getAttribute('poster')
+            };
+          }
+          openModal(info);
+
             });
           }
 
@@ -855,6 +889,10 @@
         // Lazy-load when cards become visible
         const cardObserver = new IntersectionObserver(entries => {
           entries.forEach(entry => {
+
+            return;//disable it
+
+
             const v = entry.target.querySelector('video');
             if (!v) return;
             if (entry.isIntersecting) {
@@ -881,11 +919,11 @@
     <!-- Pricing Section -->
     <section class="pricing-section" id="pricing" >
         <div class="section">
-            <h2 class="section-title">دسترسی به هنر قهرمانان دریافت کنید</h2>
+            <h2 class="section-title">هنر قهرمانان را دریافت کنید</h2>
             <div class="pricing-card" style="scale: 0.25;">
                 <div class="pricing-content">
-                    <p class="old-price">قیمت اصلی: ۱۲ میلیون تومان</p>
-                    <h3 class="current-price" style="font-family: 'EstedadBlack';">۴میلیون و ۸۰۰ هزارتومان</h3>
+                    <p class="old-price">قیمت اصلی: ۲۰ میلیون تومان</p>
+                    <h3 class="current-price" style="font-family: 'EstedadBlack';">۱۵ میلیون تومان</h3>
                     <p class="price-subtitle">پرداخت یکبار - دسترسی مادام‌العمر</p>
 
                     <ul class="features-list">
@@ -898,9 +936,9 @@
                         <li>ضمانت بازگشت وجه ۳۰ روزه</li>
                     </ul>
 
-                    <a href="#" class="cta-button" onclick="handlePurchase()">دریافت هنر قهرمانان-۴,۸۰۰,۰۰۰ تومان</a>
-                    <p style="color: #666; font-size: 0.95rem; margin-top: 1.5rem; opacity: 0; transform: translateY(20px);"
-                        class="next-price">قیمت اصلی: ۱۲ میلیون تومان</p>
+                    <a href="#" class="cta-button" onclick="handlePurchase()">دریافت هنر قهرمانان-۱۵ میلیون تومان</a>
+                    <!-- <p style="color: #666; font-size: 0.95rem; margin-top: 1.5rem; opacity: 0; transform: translateY(20px);"
+                        class="next-price">قیمت اصلی: ۲۰ میلیون تومان</p> -->
                 </div>
             </div>
         </div>
@@ -1719,14 +1757,14 @@
         }
 
         // Initialize videos when page loads
-        initializeVideos();
+        // initializeVideos();
 
         // TODO: Add your video URLs here
         // Example usage:
         setVideoUrls([
-            'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4',
-            'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4',
-            'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4'
+            // 'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/z8Gl06QkYM/origin_hkYpEUvori9VLzvL6MG214HHlIFV7qZMzF1NtuWo.mp4',
+            // 'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4',
+            // 'https://ahmadrezafs.arvanvod.ir/Okn5BO4ZQ6/qrVJ7GJABM/origin_EYfA5RjVIGoIuSCgeJ2wZx8zr1SyQEztYrlSWzHW.mp4'
         ]);
 
         // Auto-advance slides with GSAP (increased duration for videos)
@@ -1930,7 +1968,7 @@
                             `;
                             alertDiv.innerHTML = `
                                 <h3 style="margin-bottom: 1rem; color: #00ff87;">در حال انتقال به صفحه پرداخت</h3>
-                                <p style="margin-bottom: 1.5rem;">شما در حال خرید هنر قهرمانان به قیمت ۴ میلیون و ۸۰۰ هزارتومان هستید</p>
+                                <p style="margin-bottom: 1.5rem;">شما در حال خرید هنر قهرمانان هستید</p>
                                 <div style="width: 40px; height: 40px; border: 3px solid #00ff87; border-top: 3px solid transparent; border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;"></div>
                             `;
 
@@ -2158,7 +2196,80 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+    <script>
+    // == MODAL LOGIC == //  (کد انتهای اسکریپت اصلی)
+    
+      const modal = document.getElementById('video-modal');
+      const modalContent = modal.querySelector('.video-modal-content');
+      const modalBody = document.getElementById('video-modal-body');
+      const btnClose = document.getElementById('video-modal-close');
+      const modalBackdrop = document.getElementById('video-modal-backdrop');
+      let currentVideo = null;
 
+      function openModal(videoData) {
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        // گذاشتن ویدیو اصلی با کنترل
+        modalBody.innerHTML = `
+          <video src="${videoData.videoUrl}" poster="${videoData.thumbnail}" controls autoplay playsinline style="height:100svh"></video>
+          <div class="video-modal-meta">
+            <h3>${videoData.title||''}</h3>
+            <p>${videoData.description||''}</p>
+          </div>
+        `;
+        // انیمیشن ورود
+        modalContent.style.opacity = '0';
+        modalContent.style.transform = 'scale(0.93) translateY(40px)';
+        setTimeout(()=>{
+          modalContent.style.transition = 'all 0.33s cubic-bezier(.46,.03,.52,.96)';
+          modalContent.style.opacity = '1';
+          modalContent.style.transform = 'scale(1) translateY(0)';
+        },16);
+      }
+      function closeModal() {
+        modalContent.style.transition = 'all 0.23s cubic-bezier(.46,.03,.52,.96)';
+        modalContent.style.opacity = '0';
+        modalContent.style.transform = 'scale(0.95) translateY(32px)';
+        setTimeout(()=>{
+          modal.classList.remove('active');
+          modalBody.innerHTML = '';
+          document.body.style.overflow = '';
+        },210);
+      }
+      btnClose.onclick = closeModal;
+      modal.addEventListener('mousedown', function(ev) {
+        
+        if (!modalContent.contains(ev.target)) closeModal();
+      });
+      // بستن با ESC
+      document.addEventListener('keydown',e=>{if (modal.classList.contains('active') && (e.key==='Escape'||e.key==='Esc')) closeModal();});
+
+      // برای هر کارت ویدیو
+      document.querySelectorAll('.video-card').forEach((card, idx) => {
+        
+        card.querySelector('.play-toggle').addEventListener('click', () => {
+          
+          // اطلاعات ویدیو را از DOM یا videosData استخراج کن
+          const v = card.querySelector('video');
+          let info = { title: '', description: '', videoUrl: '', thumbnail: '' };
+          // اگر videosData در اسکوپ هست (اکثر مواقع هست)
+          if (typeof videosData !== 'undefined' && videosData[idx]) {
+            info = videosData[idx];
+          } else {
+            const source = v.querySelector('source');
+            info = {
+              title: (card.querySelector('.video-meta h3')||{}).innerText||'',
+              description: (card.querySelector('.video-meta p')||{}).innerText||'',
+              videoUrl: source ? (source.getAttribute('data-src')||source.getAttribute('src')) : '',
+              thumbnail: v.getAttribute('poster')
+            };
+          }
+          openModal(info);
+        });
+      });
+    
+</script>
 </body>
 
 </html>
