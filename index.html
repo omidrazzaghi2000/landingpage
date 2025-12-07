@@ -1931,71 +1931,12 @@
             // });
         }
 
-        // Enhanced button click animations
+        // Purchase -> open order form page in new tab
         function handlePurchase() {
-            const button = event.target;
-
-            // Scale down animation
-            gsap.to(button, {
-                scale: 0.95,
-                duration: 0.1,
-                ease: "power2.out",
-                onComplete: function () {
-                    // Scale back up with bounce
-                    gsap.to(button, {
-                        scale: 1,
-                        duration: 0.3,
-                        ease: "back.out(1.7)",
-                        onComplete: function () {
-                            // Show alert with fade in effect
-                            const alertDiv = document.createElement('div');
-                            alertDiv.style.cssText = `
-                                position: fixed;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                                background: linear-gradient(135deg, #1a1a2e, #16213e);
-                                color: #fff;
-                                padding: 2rem;
-                                border-radius: 20px;
-                                border: 2px solid rgba(0, 255, 135, 0.3);
-                                backdrop-filter: blur(20px);
-                                z-index: 10000;
-                                text-align: center;
-                                opacity: 0;
-                                scale: 0.8;
-                                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-                            `;
-                            alertDiv.innerHTML = `
-                                <h3 style="margin-bottom: 1rem; color: #00ff87;">در حال انتقال به صفحه پرداخت</h3>
-                                <p style="margin-bottom: 1.5rem;">شما در حال خرید هنر قهرمانان هستید</p>
-                                <div style="width: 40px; height: 40px; border: 3px solid #00ff87; border-top: 3px solid transparent; border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;"></div>
-                            `;
-
-                            document.body.appendChild(alertDiv);
-
-                            // Animate alert in
-                            gsap.to(alertDiv, {
-                                opacity: 1,
-                                scale: 1,
-                                duration: 0.5,
-                                ease: "back.out(1.7)"
-                            });
-
-                            // Remove alert after 3 seconds
-                            setTimeout(() => {
-                                gsap.to(alertDiv, {
-                                    opacity: 0,
-                                    scale: 0.8,
-                                    duration: 0.3,
-                                    ease: "power2.in",
-                                    onComplete: () => alertDiv.remove()
-                                });
-                            }, 3000);
-                        }
-                    });
-                }
-            });
+            const courseVariantId = 123; // مقدار پیش‌فرض؛ قابل تغییر
+            const baseUrl = localStorage.getItem('lp_base_url') || '';
+            const targetUrl = `order.html?course_variant_id=${courseVariantId}${baseUrl ? `&baseUrl=${encodeURIComponent(baseUrl)}` : ''}`;
+            window.open(targetUrl, '_blank');
         }
 
         // Scroll-triggered animations for hero parallax
