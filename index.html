@@ -1933,9 +1933,9 @@
 
         // Purchase -> open order form page in new tab
         function handlePurchase() {
-            const courseVariantId = 123; // مقدار پیش‌فرض؛ قابل تغییر
-            const baseUrl = localStorage.getItem('lp_base_url') || '';
-            const targetUrl = `order.html?course_variant_id=${courseVariantId}${baseUrl ? `&baseUrl=${encodeURIComponent(baseUrl)}` : ''}`;
+            const courseVariantId = 79; // مقدار پیش‌فرض؛ قابل تغییر
+            // const baseUrl = localStorage.getItem('lp_base_url') || 'api.persianball.ir';
+            const targetUrl = `order.html?course_variant_id=${courseVariantId}`;
             window.open(targetUrl, '_blank');
         }
 

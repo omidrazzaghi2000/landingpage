@@ -32,17 +32,92 @@
     .status { margin-top:12px; padding:10px; border-radius:8px; display:none; }
     .status.error { display:block; background:#ffecec; color:#b00020; }
     .status.success { display:block; background:#e7fff3; color:#0a5230; }
+
+    /* New Animated Toggle Styles */
+    .toggle-wrapper {
+      position: relative;
+      display: flex;
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 4px;
+      margin: 20px 0;
+      cursor: pointer;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+      font-family: 'EstedadBold';
+      user-select: none;
+    }
+    .toggle-option {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      z-index: 2;
+      color: #64748b;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .toggle-option.active {
+      color: #0d6efd;
+    }
+    .toggle-glider {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      right: 4px; /* Start at Right (Email) because RTL */
+      width: calc(50% - 4px);
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy effect */
+      z-index: 1;
+    }
+    /* When Mobile (Left side in RTL) is selected */
+    .toggle-wrapper[data-selected="mobile"] .toggle-glider {
+      transform: translateX(-102%); /* Move to left */
+    }
+
+    /* Input Animations */
+    .input-anim-container {
+      position: relative;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .contact-input-group {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(10px);
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    .contact-input-group.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+      pointer-events: auto;
+    }
+    /* Styles for discount row */
+    .discount-row { display:flex; gap:8px; }
+    .apply-btn { background:#0d6efd; color:#fff; border:none; border-radius:8px; padding:0 16px; font-family:'EstedadBold'; cursor:pointer; transition:background .2s; }
+    .apply-btn:hover { background:#0b5ed7; }
+    .voucher-result { margin-top:8px; font-size:0.9rem; }
+    .voucher-result.success { color:#0a5230; background:#e7fff3; padding:8px; border-radius:6px; }
+    .voucher-result.error { color:#b00020; background:#ffecec; padding:8px; border-radius:6px; }
+    .price-details { display:flex; flex-direction:column; gap:4px; margin-top:4px; }
+    .price-row { display:flex; justify-content:space-between; }
+    .final-price { font-weight:bold; color:#0d6efd; border-top:1px dashed #ccc; padding-top:4px; margin-top:4px; }
   </style>
 </head>
 <body style="font-family: 'EstedadRegular';">
   <div class="checkout-wrap">
     <div class="top-banner" aria-label="اطلاعیه ظرفیت">
       <div class="left">
-        <span>⚠️ ظرفیت محدود: فقط ۲۰۰ جایگاه این ماه!</span>
-        <span class="badge">🔥 <span id="spots-left">193</span> جایگاه باقی‌مانده</span>
-        <span class="badge">⚡️ 7 جایگاه امروز رزرو شد</span>
+        <span>⚠️ ظرفیت محدود: فقط <span id="capacity-total">—</span> جایگاه این ماه!</span>
+        <span class="badge">🔥 <span id="spots-left">—</span> جایگاه باقی‌مانده</span>
+        <span class="badge">⚡️ <span id="purchased-count">—</span> جایگاه رزرو شده</span>
       </div>
-      <div class="pill" id="base-url-pill" title="Base URL">Base URL</div>
+      <!-- <div class="pill" id="base-url-pill" title="Base URL"></div> -->
     </div>
 
     <div class="tabs" role="tablist">
@@ -63,19 +138,38 @@
               <input id="last_name" name="last_name" placeholder="مثال: احمدی" required />
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">ایمیل</label>
-              <input id="email" name="email" type="email" placeholder="ali@example.com" />
-            </div>
-            <div class="form-group">
-              <label for="mobile_number">شماره موبایل</label>
-              <input id="mobile_number" name="mobile_number" inputmode="tel" placeholder="09123456789" />
+          
+          <div class="form-group">
+            <label>روش تماس</label>
+            <div class="toggle-wrapper" id="contactToggle" data-selected="email">
+              <div class="toggle-glider"></div>
+              <div class="toggle-option active" data-value="email">ایمیل</div>
+              <div class="toggle-option" data-value="mobile">شماره موبایل</div>
             </div>
           </div>
+
+          <div class="input-anim-container">
+            <div class="contact-input-group active" id="group-email">
+              <div class="form-group">
+                <label for="email">ایمیل</label>
+                <input id="email" name="email" type="email" placeholder="ali@example.com" />
+              </div>
+            </div>
+            <div class="contact-input-group" id="group-mobile">
+              <div class="form-group">
+                <label for="mobile_number">شماره موبایل</label>
+                <input id="mobile_number" name="mobile_number" inputmode="tel" placeholder="09123456789" />
+              </div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="discount_code">کد تخفیف (اختیاری)</label>
-            <input id="discount_code" name="discount_code" placeholder="مثال: AOC50" />
+            <div class="discount-row">
+              <input id="discount_code" name="discount_code" placeholder="مثال: AOC50" />
+              <button type="button" class="apply-btn" id="applyVoucherBtn">اعمال</button>
+            </div>
+            <div id="voucherResult" class="voucher-result"></div>
           </div>
           <div class="form-actions">
             <button type="submit" class="submit-btn" id="submitBtn">ادامه و ارسال اطلاعات</button>
@@ -95,58 +189,190 @@
     const urlParams = new URLSearchParams(window.location.search);
     const paramBase = urlParams.get('baseUrl');
     if (paramBase) localStorage.setItem('lp_base_url', paramBase);
-    const BASE_URL = localStorage.getItem('lp_base_url') || '';
-    document.getElementById('base-url-pill').textContent = BASE_URL ? BASE_URL : 'Base URL: تنظیم نشده';
+    const BASE_URL = localStorage.getItem('lp_base_url') || 'https://api.persianball.ir';
+    // document.getElementById('base-url-pill').textContent = BASE_URL ? BASE_URL : 'Base URL: تنظیم نشده';
 
     // Get course variant id from query or default
-    const courseId = parseInt(urlParams.get('course_variant_id') || '123', 10);
+    const courseId = parseInt(urlParams.get('course_variant_id') || '79', 10);
     document.getElementById('course_variant_id').value = courseId;
+
+    // Contact Method Toggle Logic
+    const toggleWrapper = document.getElementById('contactToggle');
+    const options = document.querySelectorAll('.toggle-option');
+    const groupEmail = document.getElementById('group-email');
+    const groupMobile = document.getElementById('group-mobile');
+    let currentMethod = 'email';
+
+    options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const val = opt.dataset.value;
+        if (val === currentMethod) return;
+        
+        // Update Toggle UI
+        currentMethod = val;
+        toggleWrapper.setAttribute('data-selected', val);
+        options.forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+
+        // Update Inputs UI
+        if (val === 'email') {
+          groupEmail.classList.add('active');
+          groupMobile.classList.remove('active');
+          document.getElementById('mobile_number').value = ''; // Clear other input
+        } else {
+          groupMobile.classList.add('active');
+          groupEmail.classList.remove('active');
+          document.getElementById('email').value = ''; // Clear other input
+        }
+      });
+    });
 
     function showStatus(text, type) {
       statusEl.textContent = text;
       statusEl.className = 'status ' + type;
     }
 
-    function validateForm(values) {
+    async function fetchStockInfo() {
+      try {
+        const res = await fetch(`${BASE_URL}/v1/product/course-variant/${courseId}/stock-info/`, {
+          headers: { 'Content-Type': 'application/json' }
+        });
+        if (!res.ok) throw new Error('خطا در دریافت ظرفیت دوره');
+        const data = await res.json();
+        const { total_capacity, purchased_count, available_spots } = data || {};
+        const capEl = document.getElementById('capacity-total');
+        const purchasedEl = document.getElementById('purchased-count');
+        const leftEl = document.getElementById('spots-left');
+        if (typeof total_capacity === 'number') capEl.textContent = total_capacity;
+        if (typeof purchased_count === 'number') purchasedEl.textContent = purchased_count;
+        if (typeof available_spots === 'number') leftEl.textContent = available_spots;
+      } catch (err) {
+        console.warn('Stock info error:', err);
+        // نمایش مقادیر پیش‌فرض اگر درخواست ناموفق بود
+        document.getElementById('capacity-total').textContent = document.getElementById('capacity-total').textContent || '—';
+        document.getElementById('purchased-count').textContent = document.getElementById('purchased-count').textContent || '—';
+        document.getElementById('spots-left').textContent = document.getElementById('spots-left').textContent || '—';
+      }
+    }
+    fetchStockInfo();
+
+    // ----- Voucher (Discount) Verification -----
+    const applyBtn = document.getElementById('applyVoucherBtn');
+    const voucherResult = document.getElementById('voucherResult');
+    let appliedVoucher = null;
+
+    function formatCurrency(n) {
+      if (typeof n !== 'number') return '—';
+      return n.toLocaleString('fa-IR');
+    }
+
+    async function applyVoucher() {
+      const code = document.getElementById('discount_code').value.trim();
+      if (!code) {
+        voucherResult.style.color = '#b00020';
+        voucherResult.textContent = 'کد تخفیف را وارد کنید';
+        return;
+      }
+      if (!BASE_URL) { showStatus('Base URL تنظیم نشده است.', 'error'); return; }
+      applyBtn.disabled = true;
+      voucherResult.style.color = '#333';
+      voucherResult.textContent = 'در حال بررسی کد تخفیف...';
+      try {
+        const res = await fetch(`${BASE_URL}/v1/payment/voucher/verify/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code, course_variant_id: courseId })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          const msg = data?.detail || 'کد تخفیف نامعتبر است';
+          throw new Error(msg);
+        }
+        appliedVoucher = { code, ...data };
+        voucherResult.style.color = '#0a5230';
+        voucherResult.textContent = `تخفیف ${data.discount_percent}% — قیمت اصلی ${formatCurrency(data.discount_amount)} — قیمت نهایی ${formatCurrency(data.final_price)} تومان`;
+        showStatus('کد تخفیف با موفقیت اعمال شد.', 'success');
+      } catch (err) {
+        appliedVoucher = null;
+        voucherResult.style.color = '#b00020';
+        voucherResult.textContent = err.message;
+      } finally {
+        applyBtn.disabled = false;
+      }
+    }
+    applyBtn.addEventListener('click', applyVoucher);
+
+    function validateForm(values, selectedMethod) {
       const errors = [];
       if (!values.first_name?.trim()) errors.push('نام را وارد کنید');
       if (!values.last_name?.trim()) errors.push('نام خانوادگی را وارد کنید');
-      const hasEmail = !!values.email?.trim();
-      const hasMobile = !!values.mobile_number?.trim();
-      if (!hasEmail && !hasMobile) errors.push('یکی از ایمیل یا شماره موبایل را وارد کنید');
-      if (hasEmail && !/^\S+@\S+\.\S+$/.test(values.email)) errors.push('ایمیل نامعتبر است');
-      if (hasMobile && !/^\d{10,}$/.test(values.mobile_number.replace(/\D/g,''))) errors.push('شماره موبایل نامعتبر است');
+      if (selectedMethod === 'email') {
+        if (!values.email?.trim()) errors.push('ایمیل را وارد کنید');
+        else if (!/^\S+@\S+\.\S+$/.test(values.email)) errors.push('ایمیل نامعتبر است');
+      } else if (selectedMethod === 'mobile') {
+        const mobile = values.mobile_number?.replace(/\D/g,'') || '';
+        if (!mobile) errors.push('شماره موبایل را وارد کنید');
+        else if (!/^\d{10,}$/.test(mobile)) errors.push('شماره موبایل نامعتبر است');
+      }
       return errors;
     }
 
+    // const contactRadios = document.querySelectorAll('input[name="contact_method"]');
+    // function updateContactVisibility() {
+    //   const selected = document.querySelector('input[name="contact_method"]:checked').value;
+    //   document.querySelectorAll('.contact-field').forEach(el => {
+    //     const show = el.getAttribute('data-method') === selected;
+    //     el.style.display = show ? '' : 'none';
+    //     if (!show) {
+    //       const input = el.querySelector('input');
+    //       if (input) input.value = '';
+    //     }
+    //   });
+    // }
+    // contactRadios.forEach(r => r.addEventListener('change', updateContactVisibility));
+    // updateContactVisibility();
+
     document.getElementById('order-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      const selectedMethod = document.querySelector('.toggle-option.active').getAttribute("data-value");
       const values = {
         course_variant_id: courseId,
         first_name: document.getElementById('first_name').value.trim(),
         last_name: document.getElementById('last_name').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        mobile_number: document.getElementById('mobile_number').value.trim(),
       };
+      if (selectedMethod === 'email') {
+        values.email = document.getElementById('email').value.trim();
+      } else {
+        values.mobile_number = document.getElementById('mobile_number').value.trim();
+      }
       const discountCode = document.getElementById('discount_code').value.trim();
-      if (discountCode) values.discount_code = discountCode; // اختیاری اگر API پشتیبانی کند
+      if (discountCode) values.voucher_code = discountCode; // مطابق مستندات API
 
-      const errs = validateForm(values);
+      const errs = validateForm(values, selectedMethod);
       if (errs.length) { showStatus(errs.join(' — '), 'error'); return; }
       if (!BASE_URL) { showStatus('Base URL تنظیم نشده است. ?baseUrl=... را به آدرس صفحه اضافه کنید یا در localStorage ذخیره کنید.', 'error'); return; }
 
       submitBtn.disabled = true; showStatus('در حال ارسال اطلاعات...', 'success');
       try {
-        const res = await fetch(`${BASE_URL}/api/order/landing-page-order/`, {
+        const res = await fetch(`${BASE_URL}/v1/order/landing-page-order/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(values)
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data.message || 'خطا در ارسال اطلاعات');
-        showStatus('ثبت اطلاعات با موفقیت انجام شد. در حال هدایت به پرداخت...', 'success');
-        // در اینجا می‌توانید به صفحه پرداخت هدایت کنید
-        // window.location.href = `${BASE_URL}/payment?order_id=${data.id || ''}`;
+        if (!res.ok) {
+          const msg = data?.detail || data?.message || 'خطا در ارسال اطلاعات';
+          throw new Error(msg);
+        }
+        // موفق: ریدایرکت به درگاه یا اعلام پایان برای دوره رایگان
+        if (data.redirect_url) {
+          showStatus('ثبت اطلاعات با موفقیت انجام شد. انتقال به درگاه پرداخت...', 'success');
+          window.location.href = data.redirect_url;
+        } else if (data.status === 'done') {
+          showStatus('ثبت‌نام دوره رایگان با موفقیت انجام شد.', 'success');
+        } else {
+          showStatus('ثبت اطلاعات انجام شد.', 'success');
+        }
       } catch (err) {
         showStatus(err.message, 'error');
       } finally { submitBtn.disabled = false; }
@@ -154,4 +380,3 @@
   </script>
 </body>
 </html>
-
