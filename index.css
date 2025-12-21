@@ -1984,7 +1984,7 @@
       text-decoration: line-through;
       color: #666;
       font-size: 1rem;
-      margin-bottom: 1rem;
+      /* margin-bottom: 1rem; */
       font-family: 'EstedadBold';
       opacity: 0;
       transform: translateY(-20px);
@@ -2062,13 +2062,13 @@
 
   @media (max-width: 768px) {
       .testimonials-section {
-          padding: 60px 1rem;
+          padding: 60px 0rem;
       }
   }
 
   @media (max-width: 480px) {
       .testimonials-section {
-          padding: 40px 0.8rem;
+          padding: 40px 0rem;
       }
   }
 
@@ -2082,7 +2082,7 @@
 
   @media (max-width: 768px) {
       .tweets-section {
-          padding: 80px 1rem 60px;
+          padding: 0;
       }
   }
 
@@ -2096,6 +2096,7 @@
       .tweets-slider {
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
+          
       }
   }
 
@@ -2107,10 +2108,13 @@
   }
 
   @media (max-width: 768px) {
+    
       .tweets-track {
-        animation: tweets-marquee 40s linear infinite;
+        animation: none;
           /* overflow-x: auto; */
       }
+
+      
 
   }
 
@@ -2125,6 +2129,7 @@
   @media (max-width: 768px) {
       .tweet-card {
           min-width: clamp(200px, 80vw, 300px);
+          
       }
   }
 
@@ -2187,7 +2192,7 @@
 
   @keyframes tweets-marquee {
       0% { transform: translateX(0); }
-      100% { transform: translateX(+100%); }
+      100% { transform: translateX(+250%); }
   }
   
   /* New slider layout */
@@ -2873,5 +2878,269 @@
 
   .slide-3{
     object-position: 35% 5%;
+  }
+}
+
+.aoc-hero {
+    direction: rtl;
+    background: var(--dark-gradient, linear-gradient(135deg, #1a1a2e, #16213e, #0f0f0f));
+    padding: 44px 10px 30px 10px;
+    margin: 48px 0;
+    border-radius: 28px;
+    box-shadow: 0 8px 32px rgba(39,225,250,0.19);
+    overflow: hidden;
+  }
+  
+  .aoc-hero-inner {
+    max-width: 620px;
+    margin: auto;
+    text-align: right;
+    color: #eaeaea;
+  }
+  
+  .neon-gradient-text {
+    background: var(--primary-gradient, linear-gradient(135deg, #00ff87, #60efff));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 19px;
+    letter-spacing: -0.5px;
+  }
+  
+  .aoc-desc {
+    font-size: 1.09rem;
+    line-height: 2.1;
+    margin-bottom: 18px;
+    color: #eaeaea;
+    animation: fadeInUp 1.1s both;
+  }
+  
+  .aoc-price {
+    margin-top: 18px;
+    font-size: 1.02rem;
+    color: #60efff;
+  }
+  
+  .aoc-discount {
+    display: block;
+    margin-top: 11px;
+    color: #00ff87;
+    font-weight: bold;
+    font-size: 1.12rem;
+  }
+  
+  .aoc-hero ul {
+    list-style-type: disc;
+    margin: 13px 16px;
+    padding: 0;
+  }
+  
+  .aoc-hero li {
+    font-size: 1rem;
+    color: #60efff;
+  }
+  
+  .aoc-hero mark {
+    background: transparent;
+    color: #00ff87;
+    font-weight: bold;
+  }
+  @keyframes fadeInUp {
+    from {opacity: 0; transform: translateY(40px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  .animate-fade-up {
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  }
+
+
+
+  
+  .aoc-special-offer-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 42px 0 56px 0;
+    background: transparent;
+    direction: rtl;
+  }
+  
+  .aoc-offer-box {
+    background: rgba(24, 27, 44, 0.98);
+    border: 2px solid #00ff87;
+    border-radius: 22px;
+    box-shadow: 0 0 32px 3px rgba(96,239,255,0.11);
+    max-width: 355px;
+    width: 98%;
+    padding: 32px 18px 24px 18px;
+    color: #eaeaea;
+    position: relative;
+    text-align: right;
+  }
+  
+  .aoc-offer-image {
+    width: 100%;
+    
+    margin: 0 auto 8px auto;
+  }
+  .aoc-offer-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 18px 0 rgba(0,255,135,0.21);
+  }
+  .aoc-offer-price-chip {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    background: #101318;
+    border: 1.5px solid #00ff87;
+    border-radius: 22px;
+    padding: 6px 19px;
+    color: #00ff87;
+    font-weight: bold;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 12px 0 rgba(122,255,255,0.14);
+  }
+  .aoc-offer-title {
+    font-size: 1.1rem;
+    font-family: inherit;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    letter-spacing: -0.5px;
+    background: var(--primary-gradient, linear-gradient(135deg, #00ff87, #60efff));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+            text-fill-color: transparent;
+  }
+  .aoc-offer-desc {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin-bottom: 18px;
+    margin-top: 8px;
+  }
+  .aoc-offer-list {
+    padding: 0;
+    margin: 0 0 19px 0;
+    list-style: none;
+  }
+  .aoc-offer-list li {
+    font-size: 1rem;
+    color: #eaeaea;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .aoc-offer-list .old-price {
+    text-decoration: line-through;
+    color: #e02925;
+    font-size: 0.98em;
+    margin-right: 5px;
+  }
+  .aoc-offer-list .priceless {
+    color: #00ff87;
+    font-weight: bold;
+  }
+  .aoc-offer-total {
+    font-size: 1.08rem;
+    margin-top: 6px;
+    color: #f4f4f4;
+  }
+  .aoc-offer-total .old-total {
+    text-decoration: line-through;
+    color: #e02925;
+    font-weight: bold;
+    margin-right: 3px;
+    font-size: 1.16em;
+  }
+  .aoc-offer-final-price {
+    margin-top: 11px;
+    font-size: 1.42rem;
+    color: #00ff87;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 16px #60efff44;
+    background: none !important;
+  }
+
+  .aoc-special-offer-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0 42px 0;
+  /* کامپیوتر حاشیه کمتر */
+  background: transparent;
+  direction: rtl;
+}
+
+.aoc-offer-box {
+  background: rgba(24, 27, 44, 0.98);
+  border: 2px solid #00ff87;
+  border-radius: 22px;
+  box-shadow: 0 0 32px 3px rgba(96,239,255,0.11);
+  max-width: 460px;   /* افزایش عرض در دسکتاپ */
+  width: 100%;
+  padding: 36px 25px 30px 25px; /* کاهش margin */
+  color: #eaeaea;
+  position: relative;
+  text-align: right;
+}
+.aoc-offer-image{
+    margin-top: 40px;
+  }
+
+.aoc-offer-image img{
+    
+    width: 33vw;
+  }
+
+/* حالت دسکتاپ: فاصله دور جعبه و عرض بیشتر */
+@media (min-width: 700px) {
+  .aoc-special-offer-section {
+    padding: 24px 0 36px 0;
+  }
+  .aoc-offer-box {
+    max-width: 520px;
+    padding: 44px 38px 38px 38px;
+  }
+  .aoc-offer-title {
+    font-size: 1.33rem;
+  }
+  .aoc-offer-desc, .aoc-offer-list li {
+    font-size: 1.15rem;
+  }
+  .aoc-offer-final-price {
+    font-size: 1.62rem;
+  }
+  
+  .aoc-offer-image img{
+
+    width: 10vw;
+  }
+}
+
+/* حالت خیلی بزرگ (مانیتورهای بزرگ) */
+@media (min-width: 1200px) {
+  .aoc-offer-box {
+    max-width: 600px;
+    padding: 48px 55px 48px 55px;
+  }
+}
+
+/* برای موبایل فاصله بیشتر باشد */
+@media (max-width: 480px) {
+  .aoc-offer-box {
+    max-width: 99vw;
+    padding: 24px 7px 22px 7px;
   }
 }
