@@ -153,8 +153,8 @@
   /* Customer Video Testimonials Grid */
 .video-grid-section {
     max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 1rem;
+    margin: 0rem auto;
+    padding: 4rem 1rem;
     text-align: center;
   position: relative;
   }
@@ -1047,7 +1047,7 @@
   @media (min-width: 1024px) {
       .coach-image-wrapper {
           position: absolute;
-          top: 50%;
+          top: 15%;
           left: 50%;
           transform: translate(-50%, -50%);
           margin: 0;
@@ -2889,7 +2889,7 @@
     direction: rtl;
     background: var(--dark-gradient, linear-gradient(135deg, #1a1a2e, #16213e, #0f0f0f));
     padding: 44px 10px 30px 10px;
-    margin: 48px 0;
+    margin: 0px 0;
     border-radius: 28px;
     box-shadow: 0 8px 32px rgba(39,225,250,0.19);
     overflow: hidden;
@@ -3548,3 +3548,62 @@
     .aoc-bf-accordion-toggle { font-size: 0.96rem; padding: 12px 7px;}
     .aoc-bf-accordion-content { font-size: 0.93rem;}
   }
+
+
+
+  .floating-purchase-btn {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #27e1fa 0%, #1fe374 100%);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 6px 24px rgba(30,180,115,0.18), 0 2px 4px rgba(39,225,250,0.12);
+    padding: 0 24px 0 16px;
+    height: 56px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    z-index: 1200;
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.25s, transform 0.2s;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  .floating-purchase-btn:hover, .floating-purchase-btn:focus {
+    box-shadow: 0 8px 32px rgba(30,180,115,0.38), 0 3px 12px rgba(39,225,250,0.22);
+    background: linear-gradient(135deg, #1fe374 0%, #27e1fa 100%);
+    transform: translateY(-4px) scale(1.04);
+  }
+  .floating-purchase-btn .purchase-icon {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.12);
+    border-radius: 50%;
+    margin-left: 8px;
+  }
+  .floating-purchase-btn .purchase-text {
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-right: 4px;
+  }
+  @media (max-width: 520px) {
+    .floating-purchase-btn {
+      height: 48px;
+      font-size: 1rem;
+      padding: 0 16px 0 10px;
+      left: 12px;
+      bottom: 12px;
+    }
+    .floating-purchase-btn .purchase-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+  
