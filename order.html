@@ -196,8 +196,10 @@
       align-items: start;
     }
     @media(max-width: 768px) {
+      
       .order-layout { grid-template-columns: 1fr; }
-      .product-info-col { margin-bottom: 20px; }
+      .tabs{order: 2;}
+      .product-info-col { margin-bottom: 20px; order: 1;}
     }
 
     .product-card {
@@ -398,7 +400,7 @@
       <aside class="product-info-col">
         <div class="product-card">
           <div class="product-img-wrapper">
-            <img src="assets/images/aoc_5_farsi.png" alt="Product" class="product-img" id="productImage">
+            <img src="https://api.persianball.ir/media/images/293fdd4425bd4b1cb3fefa047c6fac8e.png" alt="Product" class="product-img" id="productImage">
           </div>
           <h2 class="product-title" id="productTitle">دوره تخصصی هنر قهرمانان</h2>
           
@@ -436,13 +438,18 @@
     document.getElementById('course_variant_id').value = courseId;
 
     // --- Product Data Integration ---
-    const PRODUCT_DATA = {
-      id: 79,
-      course_name: "دوره تخصصی هنر قهرمانان",
-      price: 12000000,
-      discount_percentage: 60,
-      image: "assets/images/aoc_5_farsi.png"
-    };
+    let PRODUCT_DATA = null;
+
+async function fetchProductData() {
+  try {
+    const response = await fetch('https://api.persianball.ir/v2/product/course/28/');
+    const json = await response.json();
+    PRODUCT_DATA = json.variants.find(v => v.id === 79);
+    if (PRODUCT_DATA) {
+      PRODUCT_DATA.course_name = json.course_title;
+    }
+  } catch (e) {}
+}
 
     function formatCurrency(amount) {
       return new Intl.NumberFormat('fa-IR').format(amount) + ' تومان';
@@ -477,7 +484,7 @@
       }
     }
 
-    initProductCard();
+    fetchProductData().then(() => initProductCard());
 
     // Contact Method Toggle Logic
     const toggleWrapper = document.getElementById('contactToggle');

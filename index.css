@@ -1982,7 +1982,7 @@
   }
   
   .old-price {
-      text-decoration: line-through;
+      /* text-decoration: line-through; */
       color: #666;
       font-size: 1rem;
       /* margin-bottom: 1rem; */

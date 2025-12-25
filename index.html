@@ -1002,10 +1002,10 @@
         <section class="aoc-special-offer-section" id="app">
             <div class="aoc-offer-box">
               <div class="aoc-offer-image" style="display: flex;justify-content: center;">
-                <img  src="./assets/images/aoc_5_farsi.png" alt="Art of Champions" />
+                <img  src="https://api.persianball.ir/media/images/293fdd4425bd4b1cb3fefa047c6fac8e.png" alt="Art of Champions" />
               </div>
               <div class="aoc-offer-price-chip">
-                <span>۱۵ میلیون تومان، فقط یک‌بار</span>
+                <span id="aoc-offer-price">---</span>
               </div>
               <h3 class="aoc-offer-title">هنر قهرمانان</h3>
               <p class="aoc-offer-desc">
@@ -1024,7 +1024,7 @@
                 <span>مجموع: <span class="old-total">۱۲۰ میلیون</span></span>
               </div>
               <div class="aoc-offer-final-price">
-                فقط <strong>۱۵ میلیون تومان</strong> 
+                فقط <strong id="aoc-offer-final-price">---</strong> 
               </div>
             </div>
           </section>
@@ -1072,7 +1072,7 @@
           </section>
           <div style="justify-content: center;display: flex;margin-bottom: 24px;">
             <div style="width: 800px;">
-            <a href=" #pricing" class="aoc-success-btn" style="text-align: center;">دریافت کامل بسته فقط با ۱۵ میلیون تومان</a>
+            <a href=" #pricing" class="aoc-success-btn" style="text-align: center;">دریافت کامل بسته</a>
     
           </div>
         
@@ -1123,7 +1123,7 @@
             </div>
 
             <div class="app-cta">
-                <a href=" #pricing" class="cta-button">دریافت اپلیکیشن</a>
+                <a href="https://persianball.ir/persianball.apk" class="cta-button">دریافت اپلیکیشن</a>
             </div>
         </div>
     </section>
@@ -1354,8 +1354,8 @@
             <h2 class="section-title">هنر قهرمانان را دریافت کنید</h2>
             <div class="pricing-card" style="scale: 0.25;">
                 <div class="pricing-content">
-                    <p class="old-price">قیمت اصلی: ۲۰ میلیون تومان</p>
-                    <h3 class="current-price" style="font-family: 'EstedadBlack';">۱۵ میلیون تومان</h3>
+                    <p class="old-price" id="aoc-pricing-old">قیمت اصلی: ---</p>
+                    <h3 class="current-price" style="font-family: 'EstedadBlack';" id="aoc-pricing-main">---</h3>
                     <p class="price-subtitle">پرداخت یکبار - دسترسی مادام‌العمر</p>
 
                     <ul class="features-list">
@@ -1368,7 +1368,7 @@
                         <li>ضمانت بازگشت وجه ۳۰ روزه</li>
                     </ul>
 
-                    <a href="#" class="cta-button" onclick="handlePurchase()">دریافت هنر قهرمانان-۱۵ میلیون تومان</a>
+                    <a href="#" class="cta-button" onclick="handlePurchase()" id="cta-btn-dynamic">دریافت هنر قهرمانان</a>
                     <!-- <p style="color: #666; font-size: 0.95rem; margin-top: 1.5rem; opacity: 0; transform: translateY(20px);"
                         class="next-price">قیمت اصلی: ۲۰ میلیون تومان</p> -->
                 </div>
@@ -2717,6 +2717,33 @@
     document.querySelectorAll('.animate-fade-up').forEach(function(element, idx) {
       element.style.animationDelay = (0.2 * idx) + 's';
     });
+    
+    // ---- Dynamic Art of Champions Course Price from API ----
+    function setAocPricesFromApi() {
+        fetch('https://api.persianball.ir/v2/product/course/28/')
+            .then(res => res.json())
+            .then(data => {
+                let variant = (data.variants || []).find(v => v.id === 79);
+                if (!variant) return;
+                let price = variant.price;
+                let discount = variant.discount_percentage;
+                let discountedPrice = price*((100-discount)/100);
+                let originPrice = Math.round(price / (1 - (discount/100)));
+                let priceStr = price.toLocaleString('fa-IR') + ' تومان';
+                let originStr = originPrice.toLocaleString('fa-IR') + ' تومان';
+                let priceFinalTxt = 'فقط ' + priceStr;
+
+                let percentTxt = discount ? (discount + '% تخفیف') : '';
+                if (document.getElementById('aoc-offer-price')) document.getElementById('aoc-offer-price').innerHTML = `<s>${priceStr}</s> ${discount ? ' (' + percentTxt + ')' : ''} ${discountedPrice.toLocaleString('fa-IR')} تومان`;
+                if (document.getElementById('aoc-offer-final-price')) document.getElementById('aoc-offer-final-price').innerHTML = `${discountedPrice.toLocaleString('fa-IR')} تومان`;
+                if (document.getElementById('aoc-pricing-old')) document.getElementById('aoc-pricing-old').innerHTML = 'قیمت اصلی: ' + `<s>${priceStr}</s>` + `<span style="background-color:red;color:white;text-decoration: none;">${discount ? ' (' + percentTxt + ')' : ''}</span>`;
+                if (document.getElementById('aoc-pricing-main')) document.getElementById('aoc-pricing-main').innerHTML = discountedPrice.toLocaleString('fa-IR');
+                const btn = document.getElementById('cta-btn-dynamic');
+                if (btn) btn.innerHTML = `دریافت هنر قهرمانان - ${discountedPrice.toLocaleString('fa-IR')}`;
+            });
+    }
+    setAocPricesFromApi();
+    
     </script>
     <!-- Floating Purchase Button -->
     <button class="floating-purchase-btn" onclick="handlePurchase()" aria-label="خرید" title="خرید">
