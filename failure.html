@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرداخت ناموفق</title>
+    <style>
+        body { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #000; }
+        .aoc-fail-section {
+          padding: 32px 0 56px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: transparent;
+          direction: rtl;
+        }
+        .aoc-fail-box {
+          background: rgba(24,27,44,0.96);
+          border: 2px solid #e02925;
+          border-radius: 20px;
+          box-shadow: 0 0 32px 1px rgba(224,41,37,0.11);
+          padding: 34px 9px 24px 9px;
+          max-width: 370px;
+          width: 100%;
+          position: relative;
+          text-align: right;
+          margin: 0 10px;
+        }
+        .aoc-fail-title {
+          font-size: 1.14rem;
+          font-weight: bold;
+          color: #fff;
+          text-align: right;
+          margin-bottom: 15px;
+          letter-spacing: -1px;
+          line-height: 1.7;
+        }
+        .aoc-fail-link {
+          background: linear-gradient(135deg, #e02925, #ff667c 80%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+          font-weight: bold;
+          font-size: 1.052em;
+        }
+        .aoc-fail-list {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 22px 0;
+        }
+        .aoc-fail-list li {
+          color: #eaeaea;
+          font-size: 1rem;
+          margin-bottom: 9px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          line-height: 1.71;
+        }
+        .aoc-x-icon {
+          color: #e02925;
+          font-weight: bold;
+          font-size: 1.16em;
+          display: inline-block;
+          margin-left: 5px;
+          margin-right: 2px;
+          flex-shrink: 0;
+        }
+        .aoc-fail-btn {
+          display: block;
+          width: 100%;
+          border: none;
+          background: linear-gradient(90deg,#ff667c, #e02925 80%);
+          border-radius: 12px;
+          color: #171717;
+          font-size: 1.11rem;
+          font-weight: bold;
+          margin-top: 22px;
+          padding: 15px 0 13px 0;
+          letter-spacing: -0.5px;
+          cursor: pointer;
+          box-shadow: 0 2px 16px #ff667c44;
+          transition: background 0.18s;
+        }
+        .aoc-fail-btn:hover {
+          background: linear-gradient(90deg,#e02925, #ff667c 80%);
+          color: #0e1922;
+        }
+        @media (min-width: 700px) {
+          .aoc-fail-box { max-width: 530px; padding: 44px 35px 28px 35px; }
+          .aoc-fail-title { font-size: 1.33rem; }
+          .aoc-fail-list li { font-size: 1.09rem; }
+          .aoc-fail-btn { font-size: 1.18rem; padding: 18px 0 15px 0; }
+        }
+        @media (min-width: 1200px) {
+          .aoc-fail-box { max-width: 600px; padding: 52px 60px 34px 60px; }
+        }
+        @media (max-width: 480px) {
+          .aoc-fail-box { max-width: 99vw; padding: 18px 2px 13px 2px; }
+          .aoc-fail-title { font-size: 1.06rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="aoc-fail-section">
+      <div class="aoc-fail-box">
+        <div class="aoc-fail-title"> 
+          <span class="aoc-fail-link">پرداخت شما موفقیت‌آمیز نبود</span>
+          <br>
+          متأسفیم، تراکنش شما به دلایلی انجام نشد.
+        </div>
+        <ul class="aoc-fail-list">
+          <li><span class="aoc-x-icon">✖</span>پرداخت با مشکل مواجه شد یا لغو گردید.</li>
+          <li><span class="aoc-x-icon">✖</span>در صورت کسر وجه، مبلغ تا ۷۲ ساعت آینده به حساب شما بازمی‌گردد.</li>
+        </ul>
+        <div class="aoc-fail-title" style="font-size:1rem; margin-bottom:15px;">
+            اگر سوال یا مشکلی داشتید، لطفاً با پشتیبانی تماس بگیرید.
+        </div>
+        <button class="aoc-fail-btn" onclick="window.location.href='index.html'">
+          بازگشت به صفحه اصلی
+        </button>
+      </div>
+    </section>
+</body>
+</html>
+

@@ -1713,8 +1713,8 @@
   /* Module Image Container */
   .module-image-container {
       flex: 0 0 auto;
-      width: 300px;
-      height: 300px;
+      width: 700px;
+      height: 700px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1821,6 +1821,7 @@
       font-size: 1rem;
       opacity: 0;
       transform: translateY(10px);
+      text-align: justify;
   }
   
   .module-stats {
@@ -2038,7 +2039,7 @@
       color: #b0b0b0;
       position: relative;
       padding-right: 2.5rem;
-      font-size: 0.75rem;
+      font-size: 1rem;
       font-family: 'EstedadBold';
       opacity: 0;
       transform: translateX(30px);
@@ -2841,7 +2842,7 @@
   .timeline-content {
     position: relative;
     padding-top: 2.9rem;
-    padding-left: 5.1rem;
+    /*padding-left: 5.1rem;*/
     min-height: 90px;
     margin-bottom: 10px;
   }
@@ -3163,7 +3164,7 @@
   }
   .aoc-paths-box {
     background: rgba(24,27,44,0.96);
-    border: 2px solid #00ff87;
+    border: 2px solid #e93838;
     border-radius: 20px;
     box-shadow: 0 0 32px 1px rgba(96,239,255,0.10);
     padding: 34px 9px 20px 9px;
@@ -3267,14 +3268,6 @@
 
 
 
-  .aoc-success-section {
-    padding: 32px 0 56px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    direction: rtl;
-  }
   
   .aoc-success-box {
     background: rgba(24,27,44,0.96);
@@ -3456,4 +3449,102 @@
     .aoc-faq-title { font-size: 1.4rem; }
     .aoc-faq-item { flex-direction: column; gap: 5px; padding: 11px 7px 8px 7px; }
     .aoc-faq-q { font-size: 1.06rem; }
+  }
+
+
+
+  .aoc-module-weeks-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+    background: none;
+  }
+  
+  /* آکاردئون آیتم */
+  .aoc-bf-accordion-item {
+    border-radius: 12px;
+    background: rgba(24,27,44,0.97);
+    border: 1.1px solid #b0b0b0;
+    box-shadow: 0 1px 8px 0 rgba(0,255,135,0.07);
+    transition: box-shadow 0.22s;
+    overflow: hidden;
+  }
+  
+  .aoc-bf-accordion-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 15px 12px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1.02rem;
+    position: relative;
+    text-align: right;
+    transition: background 0.14s;
+  }
+  
+  /* لیبل و عنوان */
+  .aoc-bf-week-label {
+    display: inline-block;
+    color: #60efff;
+    background: #171b28;
+    border-radius: 8px;
+    padding: 3px 11px;
+    font-size: 0.98rem;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    box-shadow: 0 1px 7px #00ff8714;
+    margin-left: 8px;
+  }
+  .aoc-bf-week-title {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 2px;
+    flex: 1;
+    text-align: right;
+  }
+  
+  .aoc-bf-acc-icon {
+    font-size: 1.23rem;
+    color: #00ff87;
+    margin-right: 14px;
+    transition: transform 0.22s;
+  }
+  
+  /* محتوا */
+  .aoc-bf-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 18px;
+    color: #b0b0b0;
+    font-size: 0.99rem;
+    line-height: 2;
+    background: none;
+    transition: max-height 0.35s cubic-bezier(0.43,1.16,0.59,0.94), padding 0.21s;
+    text-align: justify;
+  }
+  
+  .aoc-bf-accordion-item.active .aoc-bf-accordion-content {
+    padding: 9px 18px 17px 8px;
+    max-height: 400px; /* کافی برای چندخط متن */
+  }
+  .aoc-bf-accordion-item.active .aoc-bf-acc-icon {
+    transform: rotate(90deg); /* + به × تبدیل شود */
+  }
+  
+  @media (min-width: 700px) {
+    .aoc-module-weeks-accordion { gap: 23px; }
+    .aoc-bf-accordion-toggle { font-size: 1.13rem; padding: 19px 16px;}
+  }
+  @media (max-width: 480px) {
+    .aoc-bf-accordion-toggle { font-size: 0.96rem; padding: 12px 7px;}
+    .aoc-bf-accordion-content { font-size: 0.93rem;}
   }
