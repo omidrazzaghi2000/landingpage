@@ -406,10 +406,10 @@
           
           <div class="price-container">
             <div class="price-row-top">
-              <span class="original-price" id="originalPrice">12,000,000 تومان</span>
-              <span class="discount-badge" id="discountBadge">60%</span>
+              <span class="original-price" id="originalPrice">--- تومان</span>
+              <span class="discount-badge" id="discountBadge">---%</span>
             </div>
-            <div class="final-price-display" id="finalPrice">4,800,000 تومان</div>
+            <div class="final-price-display" id="finalPrice">--- تومان</div>
             
             <div class="divider-line"></div>
             
@@ -491,7 +491,7 @@ async function fetchProductData() {
     const options = document.querySelectorAll('.toggle-option');
     const groupEmail = document.getElementById('group-email');
     const groupMobile = document.getElementById('group-mobile');
-    let currentMethod = 'email';
+    let currentMethod = 'mobile';
 
     options.forEach(opt => {
       opt.addEventListener('click', () => {
@@ -633,7 +633,8 @@ async function fetchProductData() {
 
     document.getElementById('order-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const selectedMethod = document.querySelector('.toggle-option.active').getAttribute("data-value");
+      // const selectedMethod = document.querySelector('.toggle-option.active').getAttribute("data-value");
+      const selectedMethod = "mobile";
       const values = {
         course_variant_id: courseId,
         first_name: document.getElementById('first_name').value.trim(),
