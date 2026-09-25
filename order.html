@@ -321,6 +321,246 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Success Experience */
+    body.success-open { overflow: hidden; }
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top right, rgba(0,255,135,0.16), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(13,110,253,0.22), transparent 35%),
+        rgba(5, 18, 14, 0.76);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+      z-index: 1000;
+    }
+    .success-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .success-modal {
+      width: min(100%, 760px);
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 28px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(8, 52, 40, 0.96), rgba(8, 34, 74, 0.95)),
+        #0b3a2b;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      transform: translateY(28px) scale(0.96);
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .success-overlay.active .success-modal {
+      transform: translateY(0) scale(1);
+    }
+    .success-modal::before,
+    .success-modal::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      opacity: 0.65;
+      pointer-events: none;
+    }
+    .success-modal::before {
+      width: 220px;
+      height: 220px;
+      top: -70px;
+      left: -60px;
+      background: radial-gradient(circle, rgba(0,255,135,0.32), transparent 70%);
+      animation: successFloat 6s ease-in-out infinite;
+    }
+    .success-modal::after {
+      width: 260px;
+      height: 260px;
+      bottom: -100px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(96,239,255,0.28), transparent 72%);
+      animation: successFloat 7s ease-in-out infinite reverse;
+    }
+    .success-close {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255,255,255,0.12);
+      cursor: pointer;
+      font-size: 1.35rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .success-close:hover {
+      transform: scale(1.08);
+      background: rgba(255,255,255,0.18);
+    }
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-family: 'EstedadBold';
+      margin-bottom: 16px;
+      animation: successPulse 2.3s ease-in-out infinite;
+    }
+    .success-title {
+      margin: 0 0 10px;
+      font-family: 'EstedadBold';
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.35;
+    }
+    .success-lead {
+      margin: 0 0 22px;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.9;
+      font-size: 1rem;
+    }
+    .success-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 100%;
+      margin-bottom: 22px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+      font-family: 'EstedadBold';
+    }
+    .success-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .success-step {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      animation: stepReveal 0.55s ease both;
+    }
+    .success-step:nth-child(2) { animation-delay: 0.08s; }
+    .success-step:nth-child(3) { animation-delay: 0.16s; }
+    .success-step:nth-child(4) { animation-delay: 0.24s; }
+    .success-step-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-family: 'EstedadBold';
+      font-size: 1rem;
+    }
+    .success-step-number {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: #052919;
+      background: linear-gradient(135deg, #00ff87, #7bf3ff);
+      font-size: 0.92rem;
+    }
+    .success-step p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .success-note {
+      margin-bottom: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      color: #eafff6;
+      background: linear-gradient(135deg, rgba(0,255,135,0.14), rgba(13,110,253,0.16));
+      border: 1px solid rgba(0,255,135,0.2);
+      line-height: 1.9;
+    }
+    .success-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .success-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 14px;
+      border: 0;
+      text-decoration: none;
+      font-family: 'EstedadBold';
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      cursor: pointer;
+    }
+    .success-btn:hover { transform: translateY(-2px); }
+    .success-btn-primary {
+      color: #052919;
+      background: linear-gradient(135deg, #00ff87, #9affd0);
+      box-shadow: 0 12px 26px rgba(0,255,135,0.22);
+    }
+    .success-btn-secondary {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .success-footer {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.68);
+      font-size: 0.9rem;
+    }
+    @keyframes successFloat {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(10px) translateX(8px); }
+    }
+    @keyframes successPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    @keyframes stepReveal {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .success-modal {
+        padding: 22px 18px;
+        border-radius: 22px;
+      }
+      .success-grid {
+        grid-template-columns: 1fr;
+      }
+      .success-actions {
+        flex-direction: column;
+      }
+      .success-btn {
+        width: 100%;
+      }
+      .success-close {
+        top: 12px;
+        left: 12px;
+      }
+    }
+
   </style>
 </head>
 <body style="font-family: 'EstedadRegular';">
@@ -422,9 +662,64 @@
     </div>
   </div>
 
+  <div class="success-overlay" id="successOverlay" aria-hidden="true">
+    <div class="success-modal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <button type="button" class="success-close" id="closeSuccessOverlay" aria-label="بستن">×</button>
+      <div class="success-badge">خرید شما با موفقیت انجام شد</div>
+      <h2 class="success-title" id="successTitle">دسترسی به دوره شما فعال شد</h2>
+      <p class="success-lead">
+        اکنون می‌توانید وارد سایت persianball.ir شوید و کورسی که خریداری کرده‌اید را از پنل کاربری خود مشاهده کنید.
+      </p>
+      <div class="success-course" id="successCourseName">دوره تخصصی هنر قهرمانان</div>
+      <div class="success-grid">
+        <div class="success-step">
+          <div class="success-step-title">
+            <span class="success-step-number">1</span>
+            بررسی پیامک
+          </div>
+          <p id="successSmsText">یوزرنیم و پسورد ورود برای شما پیامک شده است. پیامک‌های اخیر خود را بررسی کنید.</p>
+        </div>
+        <div class="success-step">
+          <div class="success-step-title">
+            <span class="success-step-number">2</span>
+            ورود به سایت
+          </div>
+          <p>وارد سایت persianball.ir شوید و با اطلاعات ارسال‌شده از طریق پیامک لاگین کنید.</p>
+        </div>
+        <div class="success-step">
+          <div class="success-step-title">
+            <span class="success-step-number">3</span>
+            مشاهده دوره
+          </div>
+          <p>بعد از ورود، دوره خریداری‌شده شما از داخل حساب کاربری قابل مشاهده و استفاده خواهد بود.</p>
+        </div>
+        <div class="success-step">
+          <div class="success-step-title">
+            <span class="success-step-number">4</span>
+            شروع یادگیری
+          </div>
+          <p>هر زمان خواستید دوباره وارد سایت شوید و ادامه آموزش را از همان‌جا دنبال کنید.</p>
+        </div>
+      </div>
+      <div class="success-note">
+        اگر پیامک را پیدا نکردید، پوشه پیامک‌های تبلیغاتی یا پیامک‌های مسدودشده را هم بررسی کنید. معمولا اطلاعات ورود بلافاصله ارسال می‌شود.
+      </div>
+      <div class="success-actions">
+        <a class="success-btn success-btn-primary" href="https://persianball.ir" target="_blank" rel="noopener noreferrer">ورود به persianball.ir</a>
+        <button type="button" class="success-btn success-btn-secondary" id="dismissSuccessOverlay">متوجه شدم</button>
+      </div>
+      <div class="success-footer">پس از ورود به سایت، کورس خریداری‌شده شما در حساب کاربری‌تان آماده مشاهده است.</div>
+    </div>
+  </div>
+
   <script>
     const statusEl = document.getElementById('status');
     const submitBtn = document.getElementById('submitBtn');
+    const successOverlay = document.getElementById('successOverlay');
+    const closeSuccessOverlayBtn = document.getElementById('closeSuccessOverlay');
+    const dismissSuccessOverlayBtn = document.getElementById('dismissSuccessOverlay');
+    const successCourseNameEl = document.getElementById('successCourseName');
+    const successSmsTextEl = document.getElementById('successSmsText');
 
     // Base URL configuration
     const urlParams = new URLSearchParams(window.location.search);
@@ -453,6 +748,65 @@ async function fetchProductData() {
 
     function formatCurrency(amount) {
       return new Intl.NumberFormat('fa-IR').format(amount) + ' تومان';
+    }
+
+    function closeSuccessOverlay() {
+      successOverlay.classList.remove('active');
+      successOverlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('success-open');
+    }
+
+    function showPurchaseSuccess(details = {}) {
+      const courseName =
+        details.courseName ||
+        PRODUCT_DATA?.course_name ||
+        document.getElementById('productTitle')?.textContent ||
+        'دوره خریداری‌شده شما';
+      const mobileNumber = details.mobileNumber || '';
+
+      successCourseNameEl.textContent = courseName;
+      successSmsTextEl.textContent = mobileNumber
+        ? `یوزرنیم و پسورد ورود برای شماره ${mobileNumber} پیامک شده است. پیامک‌های اخیر خود را بررسی کنید.`
+        : 'یوزرنیم و پسورد ورود برای شما پیامک شده است. پیامک‌های اخیر خود را بررسی کنید.';
+
+      successOverlay.classList.add('active');
+      successOverlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('success-open');
+    }
+
+    closeSuccessOverlayBtn.addEventListener('click', closeSuccessOverlay);
+    dismissSuccessOverlayBtn.addEventListener('click', closeSuccessOverlay);
+    successOverlay.addEventListener('click', (event) => {
+      if (event.target === successOverlay) closeSuccessOverlay();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && successOverlay.classList.contains('active')) {
+        closeSuccessOverlay();
+      }
+    });
+
+    function checkPaymentReturnState() {
+      const successFlags = ['success', 'done', 'paid', 'completed', 'ok'];
+      const queryKeys = ['payment_status', 'status', 'order_status', 'purchase'];
+      const matched = queryKeys.some((key) => {
+        const value = (urlParams.get(key) || '').toLowerCase();
+        return successFlags.includes(value);
+      });
+
+      if (!matched) return;
+
+      let savedData = null;
+      try {
+        savedData = JSON.parse(sessionStorage.getItem('lp_purchase_success') || 'null');
+      } catch (err) {
+        savedData = null;
+      }
+
+      showPurchaseSuccess({
+        courseName: savedData?.courseName,
+        mobileNumber: savedData?.mobileNumber
+      });
+      sessionStorage.removeItem('lp_purchase_success');
     }
 
     // Initialize Product Card
@@ -484,7 +838,10 @@ async function fetchProductData() {
       }
     }
 
-    fetchProductData().then(() => initProductCard());
+    fetchProductData().then(() => {
+      initProductCard();
+      checkPaymentReturnState();
+    });
 
     // Contact Method Toggle Logic
     const toggleWrapper = document.getElementById('contactToggle');
@@ -666,10 +1023,18 @@ async function fetchProductData() {
         }
         // موفق: ریدایرکت به درگاه یا اعلام پایان برای دوره رایگان
         if (data.redirect_url) {
+          sessionStorage.setItem('lp_purchase_success', JSON.stringify({
+            courseName: PRODUCT_DATA?.course_name || document.getElementById('productTitle')?.textContent || 'دوره تخصصی هنر قهرمانان',
+            mobileNumber: values.mobile_number || ''
+          }));
           showStatus('ثبت اطلاعات با موفقیت انجام شد. انتقال به درگاه پرداخت...', 'success');
           window.location.href = data.redirect_url;
-        } else if (data.status === 'done') {
+        } else if (['done', 'success', 'completed', 'paid'].includes((data.status || '').toLowerCase())) {
           showStatus('ثبت‌نام دوره رایگان با موفقیت انجام شد.', 'success');
+          showPurchaseSuccess({
+            courseName: PRODUCT_DATA?.course_name,
+            mobileNumber: values.mobile_number || ''
+          });
         } else {
           showStatus('ثبت اطلاعات انجام شد.', 'success');
         }
