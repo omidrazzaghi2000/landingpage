@@ -8,7 +8,7 @@
     <!-- <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet"> -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=20261007">
     <link href="https://framerusercontent.com/images/WaE9y1q8u84RBhVkrUOim42h24I.png" rel="icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -1372,7 +1372,7 @@
                         <li>ضمانت بازگشت وجه ۳۰ روزه</li>
                     </ul>
 
-                    <a href="#" class="cta-button" onclick="handlePurchase()" id="cta-btn-dynamic">دریافت هنر قهرمانان</a>
+                    <a href="#" class="cta-button" onclick="handlePurchase(event)" id="cta-btn-dynamic">دریافت هنر قهرمانان</a>
                     <!-- <p style="color: #666; font-size: 0.95rem; margin-top: 1.5rem; opacity: 0; transform: translateY(20px);"
                         class="next-price">قیمت اصلی: ۲۰ میلیون تومان</p> -->
                 </div>
@@ -2473,13 +2473,48 @@
             // });
         }
 
-        // Purchase -> open order form page in new tab
-        function handlePurchase() {
+        // Until the Zarinpal payment gateway is live, buyers are sent to WhatsApp
+        // instead of the order form. Set to false to restore the order/payment page.
+        const PURCHASE_VIA_WHATSAPP = true;
+        const WHATSAPP_URL = 'https://wa.me/989367007740';
+        const WHATSAPP_MESSAGE = 'سلام، برای خرید دوره «هنر قهرمانان» راهنمایی می‌خواستم.';
+
+        // Purchase -> WhatsApp modal (temporary) or order form page in new tab
+        function handlePurchase(event) {
+            if (event) event.preventDefault();
+            if (PURCHASE_VIA_WHATSAPP) {
+                openWhatsAppModal();
+                return;
+            }
             const courseVariantId = 79; // مقدار پیش‌فرض؛ قابل تغییر
             // const baseUrl = localStorage.getItem('lp_base_url') || 'api.persianball.ir';
             const targetUrl = `order.html?course_variant_id=${courseVariantId}`;
             window.open(targetUrl, '_blank');
         }
+
+        let whatsAppModalTrigger = null;
+
+        function openWhatsAppModal() {
+            const modal = document.getElementById('wa-modal');
+            const link = document.getElementById('wa-modal-link');
+            link.href = `${WHATSAPP_URL}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+            whatsAppModalTrigger = document.activeElement;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            link.focus({ preventScroll: true });
+        }
+
+        function closeWhatsAppModal() {
+            const modal = document.getElementById('wa-modal');
+            if (!modal || !modal.classList.contains('active')) return;
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            if (whatsAppModalTrigger) whatsAppModalTrigger.focus({ preventScroll: true });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeWhatsAppModal();
+        });
 
         // Scroll-triggered animations for hero parallax
         gsap.to('.hero-slider', {
@@ -2785,8 +2820,131 @@
     setAocPricesFromApi();
     
     </script>
+    <!-- WhatsApp purchase modal: temporary, until the Zarinpal payment gateway is live -->
+    <div class="wa-modal" id="wa-modal" aria-hidden="true">
+      <div class="wa-modal-backdrop" onclick="closeWhatsAppModal()"></div>
+      <div class="wa-modal-card" role="dialog" aria-modal="true" aria-labelledby="wa-modal-title" aria-describedby="wa-modal-text">
+        <button type="button" class="wa-modal-close" onclick="closeWhatsAppModal()" aria-label="بستن">&times;</button>
+
+        <svg class="wa-illustration" viewBox="0 0 320 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="waGlow">
+              <stop offset="0" stop-color="#25d366" stop-opacity=".38"/>
+              <stop offset="1" stop-color="#25d366" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="waEdge" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#00ff87"/>
+              <stop offset="1" stop-color="#60efff"/>
+            </linearGradient>
+            <radialGradient id="waBallShade" cx=".35" cy=".3" r=".8">
+              <stop offset="0" stop-color="#fff"/>
+              <stop offset="1" stop-color="#c9d3df"/>
+            </radialGradient>
+            <clipPath id="waBallClip"><circle r="16"/></clipPath>
+            <path id="waBallPatch" d="M0 10.5L5.23 14.3L3.23 20.45H-3.23L-5.23 14.3Z"/>
+            <!-- Football centred on 0,0, radius 16 -->
+            <g id="waBall">
+              <circle r="16" fill="url(#waBallShade)"/>
+              <g clip-path="url(#waBallClip)" fill="#0d1424">
+                <path d="M0 -6L5.71 -1.85L3.53 4.85H-3.53L-5.71 -1.85Z"/>
+                <use href="#waBallPatch" transform="rotate(36)"/>
+                <use href="#waBallPatch" transform="rotate(108)"/>
+                <use href="#waBallPatch" transform="rotate(180)"/>
+                <use href="#waBallPatch" transform="rotate(252)"/>
+                <use href="#waBallPatch" transform="rotate(324)"/>
+              </g>
+              <path d="M0 -6V-10.5M5.71 -1.85L9.99 -3.24M3.53 4.85L6.17 8.49M-3.53 4.85L-6.17 8.49M-5.71 -1.85L-9.99 -3.24" stroke="#0d1424" stroke-width="1.4"/>
+              <circle r="15.3" stroke="#0d1424" stroke-opacity=".25" stroke-width="1.4"/>
+            </g>
+            <path id="waSpark" d="M0 -7C.6 -2.6 2.6 -.6 7 0C2.6 .6 .6 2.6 0 7C-.6 2.6 -2.6 .6 -7 0C-2.6 -.6 -.6 -2.6 0 -7Z"/>
+          </defs>
+
+          <circle cx="160" cy="118" r="108" fill="url(#waGlow)"/>
+          <ellipse class="wa-orbit" cx="160" cy="128" rx="142" ry="44" stroke="#60efff" stroke-opacity=".28" stroke-width="1.5" stroke-dasharray="3 9"/>
+
+          <!-- Phone with a chat between the buyer and the store (RTL layout) -->
+          <g class="wa-phone">
+            <rect x="112" y="14" width="96" height="200" rx="18" fill="#0d1424" stroke="url(#waEdge)" stroke-width="2.5"/>
+            <rect x="119" y="30" width="82" height="168" rx="10" fill="#0b141a"/>
+            <rect x="146" y="20" width="28" height="4" rx="2" fill="#2a3550"/>
+            <path d="M119 40a10 10 0 0 1 10-10h62a10 10 0 0 1 10 10v14h-82z" fill="#1f2c34"/>
+            <circle cx="189" cy="42" r="7" fill="url(#waEdge)"/>
+            <rect x="148" y="37" width="33" height="4" rx="2" fill="#e9edef" fill-opacity=".85"/>
+            <rect x="160" y="44" width="21" height="3" rx="1.5" fill="#25d366" fill-opacity=".85"/>
+            <circle cx="126" cy="38" r="1.1" fill="#8696a0"/>
+            <circle cx="126" cy="42" r="1.1" fill="#8696a0"/>
+            <circle cx="126" cy="46" r="1.1" fill="#8696a0"/>
+
+            <g class="wa-bubble wa-bubble-out wa-b1">
+              <rect x="125" y="62" width="54" height="24" rx="8" fill="#005c4b"/>
+              <rect x="132" y="67" width="42" height="3.2" rx="1.6" fill="#e9edef" fill-opacity=".9"/>
+              <rect x="146" y="73" width="28" height="3.2" rx="1.6" fill="#e9edef" fill-opacity=".6"/>
+              <path class="wa-ticks" d="M129.5 80.5l1.5 1.5 3-3.4M133 80.5l1.5 1.5 3-3.4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <g class="wa-typing">
+              <rect x="170" y="94" width="26" height="15" rx="7.5" fill="#202c33"/>
+              <circle class="wa-dot" cx="177" cy="101.5" r="1.8" fill="#e9edef"/>
+              <circle class="wa-dot wa-dot-2" cx="183" cy="101.5" r="1.8" fill="#e9edef"/>
+              <circle class="wa-dot wa-dot-3" cx="189" cy="101.5" r="1.8" fill="#e9edef"/>
+            </g>
+
+            <g class="wa-bubble wa-bubble-in wa-b2">
+              <rect x="136" y="94" width="60" height="32" rx="8" fill="#202c33"/>
+              <rect x="142" y="100" width="48" height="3.2" rx="1.6" fill="#e9edef" fill-opacity=".9"/>
+              <rect x="150" y="106" width="40" height="3.2" rx="1.6" fill="#e9edef" fill-opacity=".9"/>
+              <rect x="164" y="112" width="26" height="3.2" rx="1.6" fill="#e9edef" fill-opacity=".6"/>
+              <rect x="141" y="119.5" width="10" height="2.6" rx="1.3" fill="#8696a0" fill-opacity=".7"/>
+            </g>
+
+            <g class="wa-bubble wa-bubble-out wa-b3">
+              <rect x="125" y="134" width="48" height="22" rx="8" fill="#005c4b"/>
+              <rect x="132" y="140.5" width="22" height="3.2" rx="1.6" fill="#e9edef" fill-opacity=".9"/>
+              <use href="#waBall" transform="translate(164 142) scale(.3)"/>
+              <path class="wa-ticks" d="M129.5 150.5l1.5 1.5 3-3.4M133 150.5l1.5 1.5 3-3.4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <rect x="138" y="178" width="58" height="13" rx="6.5" fill="#202c33"/>
+            <rect x="160" y="183" width="28" height="3" rx="1.5" fill="#8696a0" fill-opacity=".6"/>
+            <circle cx="128.5" cy="184.5" r="7" fill="#25d366"/>
+            <path d="M131.5 184.5h-6m2.6-2.6-2.6 2.6 2.6 2.6" stroke="#0b141a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="146" y="204" width="28" height="3" rx="1.5" fill="#2a3550"/>
+          </g>
+
+          <!-- WhatsApp badge with pulse rings -->
+          <g transform="translate(228 50)">
+            <circle class="wa-ring" r="22" stroke="#25d366" stroke-width="2"/>
+            <circle class="wa-ring wa-ring-2" r="22" stroke="#25d366" stroke-width="2"/>
+            <g class="wa-badge">
+              <circle r="22" fill="#25d366" stroke="#0b1a24" stroke-width="3"/>
+              <path transform="translate(-13 -13) scale(1.0833)" fill="#fff" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </g>
+          </g>
+
+          <!-- Bouncing football -->
+          <ellipse class="wa-ball-shadow" cx="72" cy="198" rx="13" ry="3.2" fill="#000" fill-opacity=".5"/>
+          <g transform="translate(72 170)">
+            <g class="wa-ball"><use href="#waBall"/></g>
+          </g>
+
+          <g transform="translate(266 150)"><use class="wa-spark" href="#waSpark" fill="#60efff"/></g>
+          <g transform="translate(88 70) scale(.8)"><use class="wa-spark wa-spark-2" href="#waSpark" fill="#00ff87"/></g>
+          <g transform="translate(250 200) scale(.6)"><use class="wa-spark wa-spark-3" href="#waSpark" fill="#00ff87"/></g>
+        </svg>
+
+        <span class="wa-modal-badge">درگاه پرداخت آنلاین به‌زودی فعال می‌شود</span>
+        <h3 class="wa-modal-title" id="wa-modal-title">خرید از طریق واتس‌اپ</h3>
+        <p class="wa-modal-text" id="wa-modal-text">تا فعال شدن درگاه پرداخت، ثبت‌نام دوره «هنر قهرمانان» از طریق واتس‌اپ انجام می‌شود. به کارشناس فروش پیام بدهید تا شما را در مراحل خرید راهنمایی کند.</p>
+        <a class="wa-modal-btn" id="wa-modal-link" href="https://wa.me/989367007740" target="_blank" rel="noopener" onclick="closeWhatsAppModal()">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          گفتگو در واتس‌اپ
+        </a>
+        <p class="wa-modal-number" dir="ltr">+98 936 700 7740</p>
+      </div>
+    </div>
+
     <!-- Floating Purchase Button -->
-    <button class="floating-purchase-btn" onclick="handlePurchase()" aria-label="خرید" title="خرید">
+    <button class="floating-purchase-btn" onclick="handlePurchase(event)" aria-label="خرید" title="خرید">
       <!-- <span class="purchase-icon">
         <svg height="28" viewBox="0 0 20 20" width="28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="10" cy="10" r="10" fill="#1fe374"/>
